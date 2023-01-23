@@ -12,7 +12,7 @@ $reseaux = $_POST['reseaux'];
 $nationaliter = $_POST['nationaliter']
 
 // database insert SQL code
-$sql = "INSERT INTO `artiste` ( `fldName`, `fldEmail`, `fldPhone`, `fldMessage`) VALUES ( '$txtName', '$style', '$horaire', '$reseaux', '$nationaliter')";
+$sql = "INSERT INTO `artiste` ( `Name`, `style`, `horaire`, `reseaux`, 'nationalité') VALUES ( '$txtName', '$style', '$horaire', '$reseaux', '$nationaliter')";
 
 // insert in database 
 $rs = mysqli_query($con, $sql);
