@@ -45,6 +45,7 @@ mysqli_close($con);
             <th>idRole</th>
             <th>modifier</th>
             <th>supprimer</th>
+            <th>Gouts Musicaux</th>
         </tr>
     </thead>
     <tbody>
@@ -60,6 +61,7 @@ mysqli_close($con);
                 <td><?php echo $row['idRole']; ?></td>
                 <td><a href="modifier_utilisateur1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
                 <td><a href="supprimer_utilisateur.php?id=<?php echo $row['id']; ?> ">supprimer</a></td>
+                <td><a href="ajoutGouts.php?id=<?= $row['id']; ?>">Ajouter des gouts</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
