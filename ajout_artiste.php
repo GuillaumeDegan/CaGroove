@@ -9,17 +9,17 @@ $txtName = $_POST['txtName'];
 $style = $_POST['style'];
 $horaire = $_POST['horaire'];
 $reseaux = $_POST['reseaux'];
-$nationaliter = $_POST['nationaliter']
+$nationaliter = $_POST['nationaliter'];
 
 // database insert SQL code
-$sql = "INSERT INTO `artiste` ( `Name`, `style`, `horaire`, `reseaux`, 'nationalité') VALUES ( '$txtName', '$style', '$horaire', '$reseaux', '$nationaliter')";
+$sql="INSERT INTO `artiste` (`id`, `name`, `style`, `horaire`, `reseaux sociaux`, `nationalité`) VALUES (NULL, '$txtName', '$style', '$horaire', '$reseaux', '$nationaliter'); ";
 
 // insert in database 
-$rs = mysqli_query($con, $sql);
+$rs=mysqli_query($con, $sql);
 
 if($rs)
 {
 	echo "Contact Records Inserted";
-}
+} 
 
 ?>
