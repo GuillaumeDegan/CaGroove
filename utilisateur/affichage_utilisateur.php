@@ -58,8 +58,8 @@ mysqli_close($con);
                 <td><?php echo $row['adresse']; ?></td>
                 <td><?php echo $row['age']; ?></td>
                 <td><?php echo $row['idRole']; ?></td>
-                <td><a href="modifier_artiste1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
-                <td><a href="supprimer_artiste1.php?id=<?php echo $row['id']; ?> ">supprimer</a></td>
+                <td><a href="modifier_utilisateur1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
+                <td><a href="supprimer_utilisateur.php?id=<?php echo $row['id']; ?> ">supprimer</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
