@@ -5,6 +5,30 @@
     <title>Contact Form - PHP/MySQL Demo Code</title>
   </head>
 
+  <?php 
+  
+    // Connect to the database
+  $con = mysqli_connect('localhost', 'root', '','cagroove');
+
+  // Check connection
+  if (!$con) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+
+  
+    $sqlHoraires = "SELECT * FROM organisation";
+    $resultHoraires = mysqli_query($con, $sqlHoraires);
+
+    $dataHoraires = array();
+    while ($row = mysqli_fetch_assoc($resultHoraires)) {
+        $dataHoraires[] = $row;
+    }
+
+    
+    mysqli_close($con);
+  
+  ?>
+
   <body>
     <fieldset>
       <legend>EVENT</legend>
@@ -22,8 +46,11 @@
           <input type="date" value="2017-06-01" name="date" id="date" />
         </p>
         <p>
-
-        <p>&nbsp;</p>
+            <?php foreach($dataHoraires as $checkbox) : ?>
+              <label for="horaires[]"><?= $checkbox['horaires'] ?></label>
+              <input name="horaires[]" value="h_<?= $checkbox['id'] ?>" type="checkbox">
+            <?php endforeach; ?>
+        </p>
         <p>
           <input type="submit" name="Submit" id="Submit" value="Submit" />
         </p>

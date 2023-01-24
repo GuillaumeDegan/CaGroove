@@ -16,13 +16,13 @@ if (!$con) {
 }
 
 // Select all data from the table
-$sql = "SELECT * FROM event";
-$result = mysqli_query($con, $sql);
+$sqlEvent = "SELECT * FROM event";
+$resultEvent = mysqli_query($con, $sqlEvent);
 
 // Fetch the data into an array
-$data = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $data[] = $row;
+$dataEvent = array();
+while ($row = mysqli_fetch_assoc($resultEvent)) {
+    $dataEvent[] = $row;
 }
 
 // Close the connection
@@ -44,7 +44,7 @@ mysqli_close($con);
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($data as $row): ?>
+        <?php foreach ($dataEvent as $row): ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['places']; ?></td>
@@ -57,7 +57,7 @@ mysqli_close($con);
     </tbody>
 </table>
 
-<a href="ajout_event.html">ajouter un event</a>
+<a href="ajoutForm_event.php">ajouter un event</a>
 <a href="acceuil.html">acceuil</a>
     
 </body>
