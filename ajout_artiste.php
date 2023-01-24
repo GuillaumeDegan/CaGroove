@@ -21,5 +21,6 @@ if($rs)
 {
 	echo "Contact Records Inserted";
 } 
+header('Location: affichage_artiste.php');
 
 ?>

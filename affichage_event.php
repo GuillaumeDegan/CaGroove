@@ -40,6 +40,7 @@ mysqli_close($con);
             <th>Lieu</th>
             <th>Date</th>
             <th>modif</th>
+            <th>supression</th>
         </tr>
     </thead>
     <tbody>
@@ -50,6 +51,7 @@ mysqli_close($con);
                 <td><?php echo $row['lieu']; ?></td>
                 <td><?php echo $row['date']; ?></td>
                 <td><a href="modifier_event1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
+                <td><a href="supprimer_event1.php?id=<?php echo $row['id']; ?> ">suppression</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

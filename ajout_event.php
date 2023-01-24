@@ -19,5 +19,5 @@ if($rs)
 {
 	echo "Contact Records Inserted";
 } 
-
+header('Location: affichage_event.php');
 ?>

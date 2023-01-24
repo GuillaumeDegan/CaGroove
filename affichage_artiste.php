@@ -42,6 +42,7 @@ mysqli_close($con);
             <th>Reseaux Sociaux</th>
             <th>Nationaliter</th>
             <th>MODIF</th>
+            <th>supprimer</th>
         </tr>
     </thead>
     <tbody>
@@ -54,6 +55,7 @@ mysqli_close($con);
                 <td><?php echo $row['reseauxSociaux']; ?></td>
                 <td><?php echo $row['nationalite']; ?></td>
                 <td><a href="modifier_artiste1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
+                <td><a href="supprimer_artiste1.php?id=<?php echo $row['id']; ?> ">supprimer</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
