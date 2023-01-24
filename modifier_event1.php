@@ -33,20 +33,21 @@ mysqli_close($con);
 
 
   <body>
+  <?php foreach ($data as $row): ?>
     <fieldset>
       <legend>EVENT</legend>
       <form name="frmContact" method="post" action="ajout_event.php">
         <p>
-          <label for="place"><?php echo $row['place'];?> </label>
-          <input type="text" name="place" id="place" />
+          <label for="place"> place </label>
+          <input type="text" name="place" id="place" value="<?php echo $row['place'];?>"/>
         </p>
         <p>
-          <label for="lieu">Lieu</label>
-          <input type="text" name="lieu" id="lieu" />
+          <label for="lieu"> lieu </label>
+          <input type="text" name="lieu" id="lieu" value="<?php echo $row['lieu'];?>" />
         </p>
         <p>
-          <label for="date">Date</label>
-          <input type="text" name="date" id="date" />
+          <label for="date">date </label>
+          <input type="text" name="date" id="date" value="<?php echo $row['date'];?>" />
         </p>
         <p>
 
@@ -56,5 +57,6 @@ mysqli_close($con);
         </p>
       </form>
     </fieldset>
+    <?php endforeach; ?>
   </body>
 </html>
