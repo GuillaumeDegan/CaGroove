@@ -1,18 +1,17 @@
 <?php
 // database connection code
 // $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
-
+$id = $_GET['id'];
 $con = mysqli_connect('localhost', 'root', '','cagroove');
 
 // get the post records
-$txtName = $_POST['txtName'];
-$style = $_POST['style'];
-$horaire = $_POST['horaire'];
-$reseaux = $_POST['reseaux'];
-$nationaliter = $_POST['nationaliter'];
+$place = $_POST['places'];
+$lieu = $_POST['lieu'];
+$date = $_POST['date'];
+
 
 // database insert SQL code
-$sql="INSERT INTO `artiste` (`id`, `nom`, `style`, `idHoraire`, `reseauxSociaux`, `nationalite`) VALUES (NULL, '$txtName', '$style', '$horaire', '$reseaux', '$nationaliter'); ";
+$sql="UPDATE `event` SET `places` = '$place', `lieu` = '$lieu', `date` = '$date' WHERE `event`.`id` = '$id';";
 
 // insert in database 
 $rs=mysqli_query($con, $sql);

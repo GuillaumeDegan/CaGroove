@@ -46,7 +46,7 @@ mysqli_close($con);
         <?php foreach ($data as $row): ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['place']; ?></td>
+                <td><?php echo $row['places']; ?></td>
                 <td><?php echo $row['lieu']; ?></td>
                 <td><?php echo $row['date']; ?></td>
                 <td><a href="modifier_event1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>

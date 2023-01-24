@@ -17,7 +17,7 @@ if (!$con) {
 }
 
 // Select all data from the table
-$sql = "SELECT * FROM event WHERE id = $submit_id ;";
+$sql = "SELECT * FROM artiste WHERE id = $submit_id ;";
 $result = mysqli_query($con, $sql);
 
 // Fetch the data into an array
@@ -36,21 +36,30 @@ mysqli_close($con);
   <?php foreach ($data as $row): ?>
     <fieldset>
       <legend>EVENT</legend>
-      <form name="frmContact" method="post" action="modifier_event2.php?id=<?php echo $row['id'];?>">
-        <p>
-          <label for="places"> place </label>
-          <input type="text" name="places" id="places" value="<?php echo $row['places'];?>"/>
-        </p>
-        <p>
-          <label for="lieu"> lieu </label>
-          <input type="text" name="lieu" id="lieu" value="<?php echo $row['lieu'];?>" />
-        </p>
-        <p>
-          <label for="date">date </label>
-          <input type="text" name="date" id="date" value="<?php echo $row['date'];?>" />
-        </p>
-        <p>
+      <form name="frmContact" method="post" action="modifier_artiste2.php?id=<?php echo $row['id']; ?>">
         
+      <p>
+          <label for="txtName">Nom </label>
+          <input type="text" name="txtName" id="txtName" value="<?php echo $row['nom']; ?>" />
+        </p>
+        <p>
+          <label for="style">style</label>
+          <input type="text" name="style" id="style" value="<?php echo $row['style']; ?>" />
+        </p>
+        <p>
+          <label for="horaire">horaire</label>
+          <input type="text" name="horaire" id="horaire" value="<?php echo $row['idHoraire']; ?>" />
+        </p>
+        <p>
+          <label for="reseaux">reseaux sociaux</label>
+          <textarea name="reseaux" id="reseaux" value="<?php echo $row['reseauxSociaux']; ?>"></textarea>
+        </p>
+        <p>
+          <label for="nationaliter">nationaliter</label>
+          <input type="text" name="nationaliter" id="nationaliter" value="<?php echo $row['nationalite']; ?>"/>
+        </p>
+        <p>
+
         <p>&nbsp;</p>
         <p>
           <input type="submit" name="Submit" id="Submit" value="Submit" />

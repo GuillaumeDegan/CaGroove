@@ -5,12 +5,12 @@
 $con = mysqli_connect('localhost', 'root', '','cagroove');
 
 // get the post records
-$place = $_POST['place'];
+$place = $_POST['places'];
 $lieu = $_POST['lieu'];
 $date = $_POST['date'];
 
 // database insert SQL code
-$sql="INSERT INTO `event` (`id`, `place`, `lieu`, `date`) VALUES (NULL, '$place', '$lieu', '$date'); ";
+$sql="INSERT INTO `event` (`id`, `places`, `lieu`, `date`) VALUES (NULL, '$place', '$lieu', '$date'); ";
 
 // insert in database 
 $rs=mysqli_query($con, $sql);

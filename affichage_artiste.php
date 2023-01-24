@@ -41,17 +41,19 @@ mysqli_close($con);
             <th>Horaire</th>
             <th>Reseaux Sociaux</th>
             <th>Nationaliter</th>
+            <th>MODIF</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($data as $row): ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['name']; ?></td>
+                <td><?php echo $row['nom']; ?></td>
                 <td><?php echo $row['style']; ?></td>
-                <td><?php echo $row['horaire']; ?></td>
-                <td><?php echo $row['reseaux sociaux']; ?></td>
-                <td><?php echo $row['nationalité']; ?></td>
+                <td><?php echo $row['idHoraire']; ?></td>
+                <td><?php echo $row['reseauxSociaux']; ?></td>
+                <td><?php echo $row['nationalite']; ?></td>
+                <td><a href="modifier_artiste1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
