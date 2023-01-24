@@ -47,7 +47,7 @@ mysqli_close($con);
         </p>
         <p>
           <label for="date">date </label>
-          <input type="text" name="date" id="date" value="<?php echo $row['date'];?>" />
+          <input input type="date" name="date" id="date"  value="<?php echo $row['date'];?>" />
         </p>
         <p>
         

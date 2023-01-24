@@ -58,7 +58,7 @@ mysqli_close($con);
 </table>
 
 <a href="ajout_event.html">ajouter un event</a>
-
+<a href="acceuil.html">acceuil</a>
     
 </body>
 </html>

@@ -62,6 +62,7 @@ mysqli_close($con);
 </table>
 
 <a href="ajout_artiste.html">ajouter un artiste</a>
+<a href="acceuil.html">acceuil</a>
 
 
     
