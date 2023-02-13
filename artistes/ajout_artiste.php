@@ -30,6 +30,7 @@
   ?>
 
   <body>
+  <?php include '../header/header.php';?>
     <fieldset>
       <legend>ARTISTE</legend>
       <form name="frmContact" method="post" action="ajout_artiste.php">

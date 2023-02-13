@@ -34,6 +34,7 @@ mysqli_close($con);
 
 
   <body>
+  <?php include '../header/header.php';?>
   <?php foreach ($data as $row): ?>
     <fieldset>
       <legend>EVENT</legend>
