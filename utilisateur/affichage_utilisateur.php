@@ -20,6 +20,13 @@ function goutsBoucle($id, $db) {
 
 }
 
+function passionsBoucle($id, $db) {
+    $data = $db->queryGET("SELECT passions.nom, utilisateurspassions.idUtilisateur from utilisateurspassions inner join passions on utilisateurspassions.idPassion = passions.id where utilisateurspassions.idUtilisateur = $id");
+    $arrayData = json_decode(json_encode($data), true);
+    return $arrayData;
+
+}
+
 var_dump(goutsBoucle(2,$db))
 // $data2 = $db->queryGET('SELECT goutsmusicaux.style, utilisateursgouts.idUtilisateur from utilisateursgouts inner join goutsmusicaux on utilisateursgouts.idGout = goutsmusicaux.id where utilisateursgouts.idUtilisateur = 2 ');
 // $array2 = json_decode(json_encode($data2), true);
@@ -44,6 +51,9 @@ var_dump(goutsBoucle(2,$db))
             <th>supprimer</th>
             <th>Gouts Musicaux</th>
             <th>Gouts</th>
+
+        <th>Ajout Passions</th>
+            <th>Passions</th>
         </tr>
     </thead>
     <tbody>
@@ -61,11 +71,19 @@ var_dump(goutsBoucle(2,$db))
                 <td><a href="supprimer_utilisateur.php?id=<?php echo $row['id']; ?> ">supprimer</a></td>
                 <td><a href="ajoutGouts.php?id=<?= $row['id']; ?>">Ajouter des gouts</a></td>
                 
-               <?php ?>
-<td><p><?php foreach (goutsBoucle($row['id'], $db) as $textGout): ?> 
-    <?= $textGout['style'].', ' ?>
-<?php endforeach; ?></p></td>
-            </tr>
+                <?php ?>
+                <td><p><?php foreach (goutsBoucle($row['id'], $db) as $textGout): ?> 
+                    <?= $textGout['style'].', ' ?>
+                    <?php endforeach; ?></p></td>
+
+                    
+                    <td><a href="ajout_passion.php?id=<?= $row['id']; ?>">Ajouter des Passion</a></td>   
+                    <td><p><?php foreach (passionsBoucle($row['id'], $db) as $textPassion): ?> 
+                    <?= $textPassion['style'].', ' ?>
+                    <?php endforeach; ?></p></td> 
+
+
+                </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
