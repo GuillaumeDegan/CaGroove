@@ -15,6 +15,7 @@ $gout = $_GET['style'];
 ?>
 </head>
 <body>
+<?php include 'header/header.php';?>
 
 <h3>Modification</h3>
 <form method="post" action="requetes/modifierSend_gout.php">

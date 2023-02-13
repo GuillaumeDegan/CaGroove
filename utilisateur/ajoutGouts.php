@@ -19,7 +19,7 @@ mysqli_close($con);
 
 
 ?>
-
+<?php include 'header/header.php';?>
 <div>
     <form method="post" action="ajoutGoutsSend.php?id=<?= $id ?>">
         <?php foreach($dataGouts as $gout) :?>

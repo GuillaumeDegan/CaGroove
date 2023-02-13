@@ -30,7 +30,7 @@ mysqli_close($con);
 ?>
 </head>
 <body>
-
+<?php include '../header/header.php';?>
 
 <table>
     <thead>
@@ -68,7 +68,7 @@ mysqli_close($con);
 </table>
 
 <a href="ajout_utilisateur.html">ajouter un artiste</a>
-<a href="../acceuil.html">acceuil</a>
+<a href="../accueil.html">acceuil</a>
 
 
     

@@ -1,31 +1,49 @@
-<?php
-// database connection code
-// $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Contact Form - PHP/MySQL Demo Code</title>
+  </head>
 
-$con = mysqli_connect('localhost', 'root', '','cagroove');
+  <body>
+  <?php include 'header/header.php';?>
+    <fieldset>
+      <legend>utilisateur</legend>
+      <form name="frmContact" method="post" action="ajout_utilisateur1.php">
+        <p>
+          <label for="txtName">Nom </label>
+          <input type="text" name="txtName" id="txtName" />
+        </p>
+        <p>
+          <label for="prenom">prenom</label>
+          <input type="text" name="prenom" id="prenom" />
+        </p>
+        <p>
+          <label for="email">email</label>
+          <input type="text" name="email" id="email" />
+        </p>
+        <p>
+          <label for="telephone">telephone</label>
+          <textarea name="telephone" id="telephone"></textarea>
+        </p>
+        <p>
+          <label for="adresse">adresse</label>
+          <input type="text" name="adresse" id="adresse" />
+        </p>
+        <p>
+          <label for="age">age</label>
+          <input type="text" name="age" id="age" />
+        </p>
+        <p>
+          <label for="idRole">idRole</label>
+          <input type="text" name="idRole" id="idRole" value="1" />
+        </p>
 
-// get the post records
-$txtName = $_POST['txtName'];
-$prenom = $_POST['prenom'];
-$email = $_POST['email'];
-$telephone = $_POST['telephone'];
-$adresse = $_POST['adresse'];
-$age = $_POST['age'];
-$idRole = $_POST['idRole'];
-
-// database insert SQL code
-$sql="INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `email`, `telephone`, `adresse`, `age`, `idRole`) VALUES (NULL, '$txtName', '$prenom', '$email', '$telephone', '$adresse','$age', '$idRole'); ";
-
-// insert in database 
-$rs=mysqli_query($con, $sql);
-
-if($rs)
-{
-	echo "Contact Records Inserted";
-} 
-
-
-header('Location: affichage_utilisateur.php');
-
-
-?>
+        <p>&nbsp;</p>
+        <p>
+          <input type="submit" name="Submit" id="Submit" value="Submit" />
+        </p>
+      </form>
+    </fieldset>
+  </body>
+</html>

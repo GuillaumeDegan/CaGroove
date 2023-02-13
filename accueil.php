@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+<?php include 'header/header.php';?>
+    
+    
     hey bienvenue sur le site !
 
     <a href="affichage_artiste.php">les artistes</a>

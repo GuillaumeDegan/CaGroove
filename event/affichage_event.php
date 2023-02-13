@@ -31,7 +31,7 @@ mysqli_close($con);
 
 </head>
 <body>
-
+<?php include '../header/header.php';?>
 <table>
     <thead>
         <tr>
@@ -58,7 +58,7 @@ mysqli_close($con);
 </table>
 
 <a href="ajoutForm_event.php">ajouter un event</a>
-<a href="acceuil.html">acceuil</a>
+<a href="../accueil.php">acceuil</a>
     
 </body>
 </html>

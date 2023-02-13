@@ -16,7 +16,7 @@ $passion = $_GET['passion'];
 ?>
 </head>
 <body>
-
+<?php include 'header/header.php';?>
 <h3>Modification</h3>
 <form method="post" action="requetes/modifierSend_gout.php">
     <label for="id">Id de la passion :</label>
