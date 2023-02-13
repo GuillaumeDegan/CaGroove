@@ -11,7 +11,7 @@
         <div class="link_container">
             <a href="../utilisateur/affichage_utilisateur.php">Utilisateur</a>
             <a href="../event/affichage_event.php">Event</a>
-            <a href="../affichage_artiste.php">Artiste</a>
+            <a href="../artistes/affichage_artiste.php">Artiste</a>
         </div>
     </nav>
     
