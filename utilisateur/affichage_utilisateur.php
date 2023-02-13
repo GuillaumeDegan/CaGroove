@@ -9,8 +9,21 @@
     <?php
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-$data = $db->queryGET('SELECT utilisateur.id as id, utilisateur.nom as nom, prenom, email, telephone, adresse, age, role.nom as role FROM utilisateur INNER JOIN role ON utilisateur.idRole = role.id');
+$data = $db->queryGET('SELECT utilisateur.id as id, utilisateur.nom as nom, prenom, email, telephone, adresse, age, role.nom  as role FROM utilisateur 
+INNER JOIN role ON utilisateur.idRole = role.id group by utilisateur.nom ');
 $array = json_decode(json_encode($data), true);
+
+function goutsBoucle($id, $db) {
+    $data = $db->queryGET("SELECT goutsmusicaux.style, utilisateursgouts.idUtilisateur from utilisateursgouts inner join goutsmusicaux on utilisateursgouts.idGout = goutsmusicaux.id where utilisateursgouts.idUtilisateur = $id");
+    $arrayData = json_decode(json_encode($data), true);
+    return $arrayData;
+
+}
+
+var_dump(goutsBoucle(2,$db))
+// $data2 = $db->queryGET('SELECT goutsmusicaux.style, utilisateursgouts.idUtilisateur from utilisateursgouts inner join goutsmusicaux on utilisateursgouts.idGout = goutsmusicaux.id where utilisateursgouts.idUtilisateur = 2 ');
+// $array2 = json_decode(json_encode($data2), true);
+// var_dump($data2)
 ?>
 </head>
 <body>
@@ -30,6 +43,7 @@ $array = json_decode(json_encode($data), true);
             <th>modifier</th>
             <th>supprimer</th>
             <th>Gouts Musicaux</th>
+            <th>Gouts</th>
         </tr>
     </thead>
     <tbody>
@@ -46,6 +60,11 @@ $array = json_decode(json_encode($data), true);
                 <td><a href="modifier_utilisateur1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
                 <td><a href="supprimer_utilisateur.php?id=<?php echo $row['id']; ?> ">supprimer</a></td>
                 <td><a href="ajoutGouts.php?id=<?= $row['id']; ?>">Ajouter des gouts</a></td>
+                
+               <?php ?>
+<td><p><?php foreach (goutsBoucle($row['id'], $db) as $textGout): ?> 
+    <?= $textGout['style'].', ' ?>
+<?php endforeach; ?></p></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
