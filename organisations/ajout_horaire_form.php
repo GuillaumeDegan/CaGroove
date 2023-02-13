@@ -22,7 +22,7 @@ $arrayEvents = json_decode(json_encode($events), true);
 <body>
     <form action="ajout_horaire_send.php" method="post">
         <label for="horaire">Horaire</label>
-        <input type="text" name="horaire" id="horaire">
+        <input type="datetime-local" id="horaire" name="horaire">
 
         <label for="idArtiste"></label>
         <select name="idArtiste" id="idArtiste">
