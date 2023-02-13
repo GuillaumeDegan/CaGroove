@@ -9,7 +9,7 @@
     <?php
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-$data = $db->queryGET('SELECT * FROM utilisateur');
+$data = $db->queryGET('SELECT utilisateur.id as id, utilisateur.nom as nom, prenom, email, telephone, adresse, age, role.nom as role FROM utilisateur INNER JOIN role ON utilisateur.idRole = role.id');
 $array = json_decode(json_encode($data), true);
 ?>
 </head>
@@ -26,7 +26,7 @@ $array = json_decode(json_encode($data), true);
             <th>Telephone</th>
             <th>Adresse</th>
             <th>Age</th>
-            <th>idRole</th>
+            <th>Rôle</th>
             <th>modifier</th>
             <th>supprimer</th>
             <th>Gouts Musicaux</th>
@@ -42,7 +42,7 @@ $array = json_decode(json_encode($data), true);
                 <td><?php echo $row['telephone']; ?></td>
                 <td><?php echo $row['adresse']; ?></td>
                 <td><?php echo $row['age']; ?></td>
-                <td><?php echo $row['idRole']; ?></td>
+                <td><?php echo $row['role']; ?></td>
                 <td><a href="modifier_utilisateur1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
                 <td><a href="supprimer_utilisateur.php?id=<?php echo $row['id']; ?> ">supprimer</a></td>
                 <td><a href="ajoutGouts.php?id=<?= $row['id']; ?>">Ajouter des gouts</a></td>

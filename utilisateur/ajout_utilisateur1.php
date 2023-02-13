@@ -9,7 +9,7 @@ $email = $_POST['email'];
 $telephone = $_POST['telephone'];
 $adresse = $_POST['adresse'];
 $age = $_POST['age'];
-$idRole = $_POST['idRole'];
+$idRole = $_POST['Role'];
 
 // database insert SQL code
 $sql="INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `email`, `telephone`, `adresse`, `age`, `idRole`) VALUES (NULL, '$txtName', '$prenom', '$email', '$telephone', '$adresse','$age', '$idRole'); ";

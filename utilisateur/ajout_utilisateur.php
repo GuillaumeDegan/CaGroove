@@ -35,8 +35,14 @@
           <input type="text" name="age" id="age" />
         </p>
         <p>
-          <label for="idRole">idRole</label>
-          <input type="text" name="idRole" id="idRole" value="1" />
+          <label for="Role">Rôle</label>
+          <select name="Role">
+            <option>Choisir un rôle</option>
+            <option value="4">festivalier</option>
+            <option value="3">webmaster</option>
+            <option value="2">responsable client</option>
+            <option value="1">super admin</option>
+          </select>
         </p>
 
         <p>&nbsp;</p>
