@@ -2,7 +2,8 @@
 // database connection code
 // $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
 
-$con = mysqli_connect('localhost', 'root', '','cagroove');
+require "../database/connectDB.php";
+$db = new ConnectDB('cagroove');
 
 // get the post records
 $place = $_POST['places'];
@@ -17,15 +18,7 @@ foreach($selected as $horaire) {
 // database insert SQL code
 $sql="INSERT INTO `event` (`id`, `places`, `lieu`, `date`) VALUES (NULL, '$place', '$lieu', '$date'); ";
 
-// insert in database 
-$rs=mysqli_query($con, $sql);
+$db->querySend($sql);
 
-var_dump($selected) ;
-echo $rs;
-
-if($rs)
-{
-	echo "Contact Records Inserted";
-} 
-// header('Location: affichage_event.php');
+ header('Location: affichage_event.php');
 ?>
