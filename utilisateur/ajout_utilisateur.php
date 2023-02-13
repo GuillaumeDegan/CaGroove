@@ -5,6 +5,15 @@
     <title>Contact Form - PHP/MySQL Demo Code</title>
   </head>
 
+  <?php
+
+  require "../database/connectDB.php";
+  $db = new ConnectDB('cagroove');
+  $data = $db->queryGET('SELECT * FROM role');
+  $array = json_decode(json_encode($data), true);
+
+  ?>
+
   <body>
   <?php include '../header/header.php';?>
     <fieldset>
@@ -38,10 +47,9 @@
           <label for="Role">Rôle</label>
           <select name="Role">
             <option>Choisir un rôle</option>
-            <option value="4">festivalier</option>
-            <option value="3">webmaster</option>
-            <option value="2">responsable client</option>
-            <option value="1">super admin</option>
+            <?php foreach($array as $option): ?>
+              <option value="<?= $option['id'] ?>"><?= $option['nom'] ?></option>
+            <?php endforeach; ?>
           </select>
         </p>
 
