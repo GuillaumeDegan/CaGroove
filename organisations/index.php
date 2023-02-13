@@ -8,12 +8,13 @@
     <?php
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-$data = $db->query('SELECT * FROM organisation');
+$data = $db->queryGET('SELECT organisation.id, horaires, artiste.nom as artiste, event.nom as event FROM organisation INNER JOIN artiste ON organisation.idArtiste = artiste.id INNER JOIN event ON organisation.idEvent = event.id');
 $array = json_decode(json_encode($data), true);
 ?>
    
 </head>
 <body>
+<?php include '../header/header.php';?>
 
     <h2>Horaires</h2>
     <table>
@@ -21,6 +22,8 @@ $array = json_decode(json_encode($data), true);
             <tr>
                 <th>ID</th>
                 <th>Horaires</th>
+                <th>Artiste</th>
+                <th>Evenement</th>
                 <th>Modifier</th>
                 <th>Supprimer</th>
             </tr>
@@ -30,13 +33,16 @@ $array = json_decode(json_encode($data), true);
                 <tr>
                     <td><?= $row['id']; ?></td>
                     <td><?= $row['horaires']; ?></td>
-                    <td><a href="">Modifier</a></td>
-                    <td><a href="">Supprimer</a></td>
+                    <td><?= $row['artiste']; ?></td>
+                    <td><?= $row['event']; ?></td>
+                    <td><a href="modifier_horaire_form.php?id=<?= $row['id'] ?>">Modifier</a></td>
+                    <td><a href="supprimer_horaire.php?id=<?= $row['id'] ?>">Supprimer</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
     <br />
+    <a href="ajout_horaire_form.php">Ajouter une horaire</a>
 
 </div>
     
