@@ -1,6 +1,6 @@
 <?php 
-
-$con = mysqli_connect('localhost', 'root', '','cagroove');
+require "../database/connectDB.php";
+$db = new ConnectDB('cagroove');
 
 $id = $_GET['id'];
 
