@@ -1,8 +1,6 @@
 <?php
-// database connection code
-// $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
-
-$con = mysqli_connect('localhost', 'root', '','cagroove');
+require "../database/connectDB.php";
+$db = new ConnectDB('cagroove');
 
 // get the post records
 $txtName = $_POST['txtName'];
@@ -16,14 +14,7 @@ $idRole = $_POST['idRole'];
 // database insert SQL code
 $sql="INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `email`, `telephone`, `adresse`, `age`, `idRole`) VALUES (NULL, '$txtName', '$prenom', '$email', '$telephone', '$adresse','$age', '$idRole'); ";
 
-// insert in database 
-$rs=mysqli_query($con, $sql);
-
-if($rs)
-{
-	echo "Contact Records Inserted";
-} 
-
+$db->querySend($sql);
 
 header('Location: affichage_utilisateur.php');
 

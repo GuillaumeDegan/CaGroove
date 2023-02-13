@@ -24,10 +24,14 @@ class ConnectDB{
         return $this->pdo;
     }
 
-    public function query($statement) {
+    public function queryGET($statement) {
         $req = $this->getPDO()->query($statement);
         $datas = $req->fetchAll(PDO::FETCH_OBJ);
         return $datas;
+    }
+
+    public function querySend($statement) {
+        $req = $this->getPDO()->query($statement);
     }
 
 }

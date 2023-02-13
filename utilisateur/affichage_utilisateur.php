@@ -9,7 +9,7 @@
     <?php
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-$data = $db->query('SELECT * FROM utilisateur');
+$data = $db->queryGET('SELECT * FROM utilisateur');
 $array = json_decode(json_encode($data), true);
 ?>
 </head>
