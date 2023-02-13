@@ -8,25 +8,30 @@
 
     <?php
 // Connect to the database
-$con = mysqli_connect('localhost', 'root', '','cagroove');
+// $con = mysqli_connect('localhost', 'root', '','cagroove');
 
-// Check connection
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// // Check connection
+// if (!$con) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
 
-// Select all data from the table
-$sql = "SELECT * FROM utilisateur";
-$result = mysqli_query($con, $sql);
+// // Select all data from the table
+// $sql = "SELECT * FROM utilisateur";
+// $result = mysqli_query($con, $sql);
 
-// Fetch the data into an array
-$data = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $data[] = $row;
-}
+// // Fetch the data into an array
+// $data = array();
+// while ($row = mysqli_fetch_assoc($result)) {
+//     $data[] = $row;
+// }
 
-// Close the connection
-mysqli_close($con);
+// // Close the connection
+// mysqli_close($con);
+
+require "../database.php";
+$db = new ConnectDB('cagroove');
+$data = $db->query('SELECT * FROM utilisateur');
+var_dump($data);
 ?>
 </head>
 <body>
