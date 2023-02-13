@@ -10,9 +10,7 @@
 <?php include 'header/header.php';?>
     
     
-    hey bienvenue sur le site !
+    <h1>hey bienvenue sur le site !</h1>
 
-    <a href="affichage_artiste.php">les artistes</a>
-    <a href="event/affichage_event.php">les events</a>
 </body>
 </html>

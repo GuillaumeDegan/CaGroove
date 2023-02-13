@@ -9,9 +9,11 @@
 <body>
     <nav class="nav">
         <div class="link_container">
+            <a href="../accueil.php">Accueil</a>
             <a href="../utilisateur/affichage_utilisateur.php">Utilisateur</a>
             <a href="../event/affichage_event.php">Event</a>
             <a href="../artistes/affichage_artiste.php">Artiste</a>
+            <a href="../organisations/index.php">Organisation</a>
         </div>
     </nav>
     

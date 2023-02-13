@@ -21,7 +21,6 @@ $array = json_decode(json_encode($data), true);
             <th>ID</th>
             <th>Name</th>
             <th>Style</th>
-            <th>Horaire</th>
             <th>Reseaux Sociaux</th>
             <th>Nationaliter</th>
             <th>Modifier</th>
@@ -31,21 +30,20 @@ $array = json_decode(json_encode($data), true);
     <tbody>
         <?php foreach ($array as $row): ?>
             <tr>
-                <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['nom']; ?></td>
-                <td><?php echo $row['style']; ?></td>
-                <td><?php echo $row['idHoraire']; ?></td>
-                <td><?php echo $row['reseauxSociaux']; ?></td>
-                <td><?php echo $row['nationalite']; ?></td>
-                <td><a href="modifier_artiste1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
-                <td><a href="supprimer_artiste1.php?id=<?php echo $row['id']; ?> ">supprimer</a></td>
+                <td><?= $row['id']; ?></td>
+                <td><?= $row['nom']; ?></td>
+                <td><?= $row['style']; ?></td>
+                <td><?= $row['reseauxSociaux']; ?></td>
+                <td><?= $row['nationalite']; ?></td>
+                <td><a href="modifier_artiste1.php?id=<?= $row['id']; ?> ">modifier</a></td>
+                <td><a href="supprimer_artiste1.php?id=<?= $row['id']; ?> ">supprimer</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
 
 <a href="ajout_artiste.php">ajouter un artiste</a>
-<a href="../acceuil.php">acceuil</a>
+<a href="../accueil.php">acceuil</a>
 
 
     
