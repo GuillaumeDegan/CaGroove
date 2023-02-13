@@ -30,7 +30,7 @@ mysqli_close($con);
 ?>
 </head>
 <body>
-
+<?php include '../header/header.php';?>
 
 <table>
     <thead>
