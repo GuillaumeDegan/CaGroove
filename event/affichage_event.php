@@ -8,7 +8,7 @@
     <?php
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-$data = $db->query('SELECT * FROM event');
+$data = $db->queryGET('SELECT * FROM event');
 $array = json_decode(json_encode($data), true);
 ?>
 

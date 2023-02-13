@@ -2,7 +2,8 @@
 // database connection code
 // $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
 $id = $_GET['id'];
-$con = mysqli_connect('localhost', 'root', '','cagroove');
+require "../database/connectDB.php";
+$db = new ConnectDB('cagroove');
 
 // get the post records
 $nom = $_POST['txtName'];
@@ -16,11 +17,7 @@ $nationaliter = $_POST['nationaliter'];
 $sql="UPDATE `artiste` SET `nom` = '$nom', `style` = '$style', `idHoraire` = '$horaire', `reseauxSociaux` = '$reseaux', `nationalite` = '$nationaliter' WHERE `artiste`.`id` = $id; ";
 
 // insert in database 
-$rs=mysqli_query($con, $sql);
+$db->querySend($sql);
 
-if($rs)
-{
-	echo "Contact Records Inserted";
-} 
 header('Location: affichage_artiste.php');
 ?>
