@@ -6,7 +6,7 @@
   </head>
 
   <body>
-  <?php include 'header/header.php';?>
+  <?php include '../header/header.php';?>
     <fieldset>
       <legend>utilisateur</legend>
       <form name="frmContact" method="post" action="ajout_utilisateur1.php">
