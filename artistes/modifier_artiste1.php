@@ -49,10 +49,6 @@ mysqli_close($con);
           <input type="text" name="style" id="style" value="<?php echo $row['style']; ?>" />
         </p>
         <p>
-          <label for="horaire">horaire</label>
-          <input type="text" name="horaire" id="horaire" value="<?php echo $row['idHoraire']; ?>" />
-        </p>
-        <p>
           <label for="reseaux">reseaux sociaux</label>
           <input type="text" name="reseaux" id="reseaux" value="<?php echo $row['reseauxSociaux']; ?>"></input>
         </p>
