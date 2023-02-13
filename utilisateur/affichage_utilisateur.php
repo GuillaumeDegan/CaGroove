@@ -28,10 +28,11 @@
 // // Close the connection
 // mysqli_close($con);
 
-require "../database.php";
+require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 $data = $db->query('SELECT * FROM utilisateur');
-var_dump($data);
+$array = json_decode(json_encode($data), true);
+var_dump($array);
 ?>
 </head>
 <body>
@@ -54,7 +55,7 @@ var_dump($data);
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($data as $row): ?>
+        <?php foreach ($array as $row): ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['nom']; ?></td>
