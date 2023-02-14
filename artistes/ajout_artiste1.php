@@ -1,7 +1,4 @@
 <?php
-// database connection code
-// $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
-
 
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
