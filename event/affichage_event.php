@@ -20,6 +20,7 @@ $data = $db->queryGET('SELECT * FROM event');
         <tr>
             <th>ID</th>
             <th>Place</th>
+            <th>Nom</th>
             <th>Lieu</th>
             <th>Date</th>
             <th>modif</th>
@@ -31,6 +32,7 @@ $data = $db->queryGET('SELECT * FROM event');
             <tr>
                 <td><?php echo htmlspecialchars($row->id);?></td>
                 <td><?php echo htmlspecialchars($row->places); ?></td>
+                <td><?php echo htmlspecialchars($row->nom); ?></td>
                 <td><?php echo htmlspecialchars($row->lieu); ?></td>
                 <td><?php echo htmlspecialchars($row->date); ?></td>
                 <td><a href="modifier_event1.php?id=<?php echo htmlspecialchars($row->id); ?> ">modifier</a></td>

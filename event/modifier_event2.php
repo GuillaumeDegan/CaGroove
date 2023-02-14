@@ -9,11 +9,12 @@ $db = new ConnectDB('cagroove');
 $place = $_POST['places'];
 $lieu = $_POST['lieu'];
 $date = $_POST['date'];
+$nom = $_POST['nom'];
 
 
 // database insert SQL code
-$sql="UPDATE `event` SET `places` = '$place', `lieu` = '$lieu', `date` = '$date' WHERE `event`.`id` = '$id';";
+$sql="UPDATE `event` SET  `nom` = '$nom', `places` = '$place', `lieu` = '$lieu', `date` = '$date' WHERE `id` = '$id';";
 $db->querySend($sql);
 
-header('Location: affichage_event.php');
+ header('Location: affichage_event.php');
 ?>

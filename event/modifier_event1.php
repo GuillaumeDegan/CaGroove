@@ -22,6 +22,10 @@
     <fieldset>
       <legend>EVENT</legend>
       <form name="frmContact" method="post" action="modifier_event2.php?id=<?php echo htmlspecialchars($row->id);?>">
+      <p>
+          <label for="nom"> nom </label>
+          <input type="text" name="nom" id="nom" value="<?php echo htmlspecialchars($row->nom);?>"/>
+        </p>
         <p>
           <label for="places"> place </label>
           <input type="text" name="places" id="places" value="<?php echo htmlspecialchars($row->places);?>"/>
