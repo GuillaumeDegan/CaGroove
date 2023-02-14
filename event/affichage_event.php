@@ -9,7 +9,6 @@
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 $data = $db->queryGET('SELECT * FROM event');
-$array = json_decode(json_encode($data), true);
 ?>
 
 
@@ -28,14 +27,14 @@ $array = json_decode(json_encode($data), true);
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($array as $row): ?>
+        <?php foreach ($data as $row): ?>
             <tr>
-                <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['places']; ?></td>
-                <td><?php echo $row['lieu']; ?></td>
-                <td><?php echo $row['date']; ?></td>
-                <td><a href="modifier_event1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
-                <td><a href="supprimer_event1.php?id=<?php echo $row['id']; ?> ">suppression</a></td>
+                <td><?php echo htmlspecialchars($row->id);?></td>
+                <td><?php echo htmlspecialchars($row->places); ?></td>
+                <td><?php echo htmlspecialchars($row->lieu); ?></td>
+                <td><?php echo htmlspecialchars($row->date); ?></td>
+                <td><a href="modifier_event1.php?id=<?php echo htmlspecialchars($row->id); ?> ">modifier</a></td>
+                <td><a href="supprimer_event1.php?id=<?php echo htmlspecialchars($row->id); ?> ">suppression</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

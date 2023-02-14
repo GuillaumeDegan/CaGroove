@@ -10,7 +10,7 @@
   require "../database/connectDB.php";
   $db = new ConnectDB('cagroove');
   $data = $db->queryGET('SELECT * FROM role');
-  $array = json_decode(json_encode($data), true);
+
 
   ?>
 
@@ -47,8 +47,8 @@
           <label for="Role">Rôle</label>
           <select name="Role">
             <option>Choisir un rôle</option>
-            <?php foreach($array as $option): ?>
-              <option value="<?= $option['id'] ?>"><?= $option['nom'] ?></option>
+            <?php foreach($data as $option): ?>
+              <option value="<?= htmlspecialchars($option->id) ?>"><?= htmlspecialchars($option->nom) ?></option>
             <?php endforeach; ?>
           </select>
         </p>
