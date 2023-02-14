@@ -1,3 +1,5 @@
+<!-- Page d'affichage des passions et des gouts -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +9,12 @@
     <title>Document</title>
     <title>Document</title>
     <?php
+    // connexion bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-$dataGouts = $db->queryGET('SELECT * FROM goutsmusicaux');
 
+// recuperation de tous les gouts et de toutes les passions
+$dataGouts = $db->queryGET('SELECT * FROM goutsmusicaux');
 $dataPassions = $db->queryGET('SELECT * FROM passions');
 
 ?>
@@ -32,6 +36,7 @@ $dataPassions = $db->queryGET('SELECT * FROM passions');
                 </tr>
             </thead>
             <tbody>
+                <!-- Boucle pour afficher tous les gouts -->
                 <?php foreach ($dataGouts as $row): ?>
                     <tr>
                         <td><?= htmlspecialchars($row->id); ?></td>
@@ -65,6 +70,7 @@ $dataPassions = $db->queryGET('SELECT * FROM passions');
                 </tr>
             </thead>
             <tbody>
+                <!-- Boucle pour afficher toutes les passions -->
                 <?php foreach ($dataPassions as $row): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($row->id); ?></td>

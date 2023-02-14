@@ -1,13 +1,17 @@
+<!-- ¨Page de traitement de modification de la passion -->
+
 <?php
-// database connection code
+// connexion bdd
 require "../../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
-// get the post records
+// récuperation de l'id de la passion et de son nouveau nom
 $id = $_GET['id'];
 $passion = $_POST['passion'];
 
+// envoie de la requete
 $db->querySend("UPDATE `passions` SET `nom` = '$passion' WHERE `id` = '$id';");
 
+// redirection
 header('Location: ../index.php');
 ?>

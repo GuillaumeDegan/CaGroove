@@ -1,3 +1,5 @@
+<!-- Page d'affichage des evenements -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php
+    // connexion bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
+
+// requete de récuperation de tous les events
 $data = $db->queryGET('SELECT * FROM event');
 ?>
 
@@ -28,6 +33,7 @@ $data = $db->queryGET('SELECT * FROM event');
         </tr>
     </thead>
     <tbody>
+        <!-- Boucle pour afficher tous les events -->
         <?php foreach ($data as $row): ?>
             <tr>
                 <td><?= htmlspecialchars($row->id);?></td>

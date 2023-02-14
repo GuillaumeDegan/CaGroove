@@ -1,3 +1,5 @@
+<!-- Page d'affichage de toutes les horaires -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php
+    // connexion bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
+
+// recuperation de toutes les horaires
 $data = $db->queryGET('SELECT organisation.id, horaires, artiste.nom as artiste, event.nom as event FROM organisation INNER JOIN artiste ON organisation.idArtiste = artiste.id INNER JOIN event ON organisation.idEvent = event.id');
 
 ?>

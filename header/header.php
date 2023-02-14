@@ -1,3 +1,5 @@
+<!-- Menu de navigation principal du site -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,4 +1,7 @@
+<!-- Page de formulaire de modification d'une passion -->
+
 <?php
+//recuperation de son id et de son nom
 $id = $_GET['id'];
 $passion = $_GET['passion'];
 ?>

@@ -1,5 +1,7 @@
 <?php 
 
+// class permettant de faire la connexion à la bdd + des méthodes d'envoie de requetes
+
 class ConnectDB{
 
     private $db_name;
@@ -15,6 +17,7 @@ class ConnectDB{
         $this->db_host = $db_host;
     }
 
+    // connection à la bdd
     public function getPDO() {
         if($this->pdo === null) {
             $pdo = new PDO("mysql:dbname=$this->db_name;host=$this->db_host",$this->db_user,$this->db_pass);
@@ -24,17 +27,20 @@ class ConnectDB{
         return $this->pdo;
     }
 
+    // préparation des requetes à envoyer plusieurs fois
     public function prepare($statement) {
         $req = $this->getPDO()->prepare($statement);
         return $req;
     }
 
+    // méthode d'envoie d'une requete de récupération d'information
     public function queryGET($statement) {
         $req = $this->getPDO()->query($statement);
         $datas = $req->fetchAll(PDO::FETCH_OBJ);
         return $datas;
     }
 
+    // méthode d'envoie d'une requete de suppression/modification/création
     public function querySend($statement) {
         $req = $this->getPDO()->query($statement);
     }

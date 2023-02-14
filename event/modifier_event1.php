@@ -1,3 +1,5 @@
+<!-- Page de formulaire de modification d'un evenement -->
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -6,11 +8,14 @@
 
 
     <?php
+    // conexion bdd
     require "../database/connectDB.php";
     $db = new ConnectDB('cagroove');
 
+    // récuperation de l'id de l'evenement à modifier
     $submit_id = $_GET['id'];
 
+    // récupération de l'event en question
     $data = $db->queryGET("SELECT * FROM event WHERE id = $submit_id ;")
 ?>
   </head>

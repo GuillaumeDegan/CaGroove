@@ -1,3 +1,5 @@
+<!-- Page de formulaire de modification d'une horaire -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +10,17 @@
 </head>
 
 <?php 
-
+//connexion bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
+// recuperation de l'id de l'horaire a modifier
 $id = $_GET['id'];
 
+// récupération des données de l'horaire en fonction de son id
 $horaire = $db->queryGET("SELECT organisation.id, horaires, artiste.nom as artiste, event.nom as event FROM organisation INNER JOIN artiste ON organisation.idArtiste = artiste.id INNER JOIN event ON organisation.idEvent = event.id WHERE organisation.id = $id");
 
+// recuperation de tous les artistes et evenements
 $artists = $db->queryGET('SELECT * FROM artiste');
 $events = $db->queryGET('SELECT * FROM event');
 
@@ -29,6 +34,7 @@ $events = $db->queryGET('SELECT * FROM event');
 
         <label for="idArtiste"></label>
         <select name="idArtiste" id="idArtiste">
+            <!-- Boucle pour afficher tous les artistes et selectionner par defaut celui qui était deja choisi -->
         <?php foreach ($artists as $row): ?>
             <?php if(htmlspecialchars($artists->artiste) === htmlspecialchars($row->nom)): ?>
                 <option selected value='<?= htmlspecialchars($row->id) ?>'><?= htmlspecialchars($row->nom) ?></option>
@@ -40,6 +46,7 @@ $events = $db->queryGET('SELECT * FROM event');
 
         <label for="idEvent"></label>
         <select name="idEvent" id="idEvent">
+            <!-- Boucle pour afficher tous les evenements et selectionner par defaut celui qui était deja choisi -->
         <?php foreach ($events as $row): ?>
             <?php if(htmlspecialchars($horaire[0]->event) === htmlspecialchars($row->nom)): ?>
                 <option selected value='<?= htmlspecialchars($row->id) ?>'><?= htmlspecialchars($row->nom) ?></option>

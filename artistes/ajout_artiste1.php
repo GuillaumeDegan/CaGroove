@@ -1,18 +1,22 @@
+<!-- Page d'atterissage du formulaire de création d'un nouvel artiste -->
+
 <?php
 
+// Connection bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
-// get the post records
+// récupération des données du formulaire
 $txtName = $_POST['txtName'];
 $style = $_POST['style'];
 $reseaux = $_POST['reseaux'];
 $nationaliter = $_POST['nationaliter'];
 
-// database insert SQL code
+// envoie de la requete
 $sql="INSERT INTO `artiste` (`id`, `nom`, `style`, `reseauxSociaux`, `nationalite`) VALUES (NULL, '$txtName', '$style', '$reseaux', '$nationaliter'); ";
 $db->querySend($sql);
 
+// redirection vers l'affichage des artistes
 header('Location: affichage_artiste.php');
 
 ?>

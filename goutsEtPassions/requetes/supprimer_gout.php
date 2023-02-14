@@ -1,12 +1,16 @@
+<!-- ¨Page de traitement de suppression de gout -->
+
 <?php
-// database connection code
+// connexion bdd
 require "../../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
-// get the post records
+// recuperation de l'id du gout a supprimer
 $id = $_GET['id'];
 
+// requete envoyée
 $db->querySend("DELETE FROM `goutsmusicaux` WHERE `id` = $id");
 
+// redirection
 header('Location: ../index.php');
 ?>

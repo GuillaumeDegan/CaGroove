@@ -1,15 +1,17 @@
+<!-- Page de traitement de la demande de suppression d'un evenement -->
+
 <?php
-// database connection code
-$id = $_GET['id'];
+// connexion bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
-// get the post records
+//recuperation id de l'event à supprimer
+$id = $_GET['id'];
 
-// database insert SQL code
+// Création de la requete et envoie
 $sql="DELETE FROM event WHERE `event`.`id` = $id ;";
-
 $db->querySend($sql);
 
+// redirection
 header('Location: affichage_event.php');
 ?>

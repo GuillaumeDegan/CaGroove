@@ -1,4 +1,7 @@
+<!-- Page de formulaire de modification d'un gout -->
+
 <?php
+// Récuperation de l'id et du nom du gout
 $id = $_GET['id'];
 $gout = $_GET['style'];
 ?>

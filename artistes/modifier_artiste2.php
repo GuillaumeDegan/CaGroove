@@ -1,21 +1,25 @@
+<!-- Page de d'envoie des modifications du formulaire de modification de l'artiste -->
+
 <?php
-// database connection code
-$id = $_GET['id'];
+// connection bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
-// get the post records
+// récupération id de l'artiste
+$id = $_GET['id'];
+
+
+// récupération nouvelle données à modifier
 $nom = $_POST['txtName'];
 $style = $_POST['style'];
 $reseaux = $_POST['reseaux'];
 $nationaliter = $_POST['nationaliter'];
 
 
-// database insert SQL code
+// création de la requete et envoie
 $sql="UPDATE `artiste` SET `nom` = '$nom', `style` = '$style', `reseauxSociaux` = '$reseaux', `nationalite` = '$nationaliter' WHERE `artiste`.`id` = $id; ";
-
-// insert in database 
 $db->querySend($sql);
 
+// redirection vers l'affichage
 header('Location: affichage_artiste.php');
 ?>

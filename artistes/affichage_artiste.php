@@ -1,3 +1,5 @@
+<!-- Page d'affichage des artistes -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php
+    // appel bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
+
+// Récupération de tous les artistes
 $data = $db->queryGET('SELECT * FROM artiste');
 ?>
 </head>
