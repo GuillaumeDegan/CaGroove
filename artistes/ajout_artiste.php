@@ -5,30 +5,6 @@
     <title>Contact Form - PHP/MySQL Demo Code</title>
   </head>
 
-  <?php 
-  
-   // Connect to the database
-   $con = mysqli_connect('localhost', 'root', '','cagroove');
-
-   // Check connection
-   if (!$con) {
-       die("Connection failed: " . mysqli_connect_error());
-   }
- 
-   
-     $sqlHoraires = "SELECT * FROM organisation";
-     $resultHoraires = mysqli_query($con, $sqlHoraires);
- 
-     $dataHoraires = array();
-     while ($row = mysqli_fetch_assoc($resultHoraires)) {
-         $dataHoraires[] = $row;
-     }
- 
-     
-     mysqli_close($con);
-
-  ?>
-
   <body>
   <?php include '../header/header.php';?>
     <fieldset>
@@ -43,15 +19,8 @@
           <input type="text" name="style" id="style" />
         </p>
         <p>
-          <label for="horaire">horaire</label>
-          <?php foreach($dataHoraires as $checkbox) : ?>
-            <input name="horaires[]" value="h_<?= $checkbox['id'] ?>" type="checkbox">
-            <label for="horaires[]"><?= $checkbox['horaires'] ?></label>
-          <?php endforeach; ?>
-        </p>
-        <p>
           <label for="reseaux">reseaux sociaux</label>
-          <textarea name="reseaux" id="reseaux"></textarea>
+          <input type="text" name="reseaux" id="reseaux" />
         </p>
         <p>
           <label for="nationaliter">nationaliter</label>

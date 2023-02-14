@@ -9,28 +9,16 @@
     <?php
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
+
 $data = $db->queryGET('SELECT utilisateur.id as id, utilisateur.nom as nom, prenom, email, telephone, adresse, age, role.nom  as role FROM utilisateur 
 INNER JOIN role ON utilisateur.idRole = role.id group by utilisateur.nom ');
-$array = json_decode(json_encode($data), true);
 
-function goutsBoucle($id, $db) {
-    $data = $db->queryGET("SELECT goutsmusicaux.style, utilisateursgouts.idUtilisateur from utilisateursgouts inner join goutsmusicaux on utilisateursgouts.idGout = goutsmusicaux.id where utilisateursgouts.idUtilisateur = $id");
-    $arrayData = json_decode(json_encode($data), true);
-    return $arrayData;
+$sqlGoutsRequest = "SELECT goutsmusicaux.style from utilisateursgouts inner join goutsmusicaux on utilisateursgouts.idGout = goutsmusicaux.id where utilisateursgouts.idUtilisateur = ?";
+$GoutsPrepared = $db->prepare($sqlGoutsRequest);
 
-}
+$sqlPassionsRequest = "SELECT passions.nom as nompassion, utilisateurspassions.idUtilisateur from utilisateurspassions inner join passions on utilisateurspassions.idPassion = passions.id where utilisateurspassions.idUtilisateur = ?";
+$PassionsPrepared = $db->prepare($sqlPassionsRequest);
 
-function passionsBoucle($id, $db) {
-    $data = $db->queryGET("SELECT passions.nom as nompassion, utilisateurspassions.idUtilisateur from utilisateurspassions inner join passions on utilisateurspassions.idPassion = passions.id where utilisateurspassions.idUtilisateur = $id");
-    $arrayData = json_decode(json_encode($data), true);
-    return $arrayData;
-
-}
-
-var_dump(goutsBoucle(2,$db))
-// $data2 = $db->queryGET('SELECT goutsmusicaux.style, utilisateursgouts.idUtilisateur from utilisateursgouts inner join goutsmusicaux on utilisateursgouts.idGout = goutsmusicaux.id where utilisateursgouts.idUtilisateur = 2 ');
-// $array2 = json_decode(json_encode($data2), true);
-// var_dump($data2)
 ?>
 </head>
 <body>
@@ -47,42 +35,45 @@ var_dump(goutsBoucle(2,$db))
             <th>Adresse</th>
             <th>Age</th>
             <th>Rôle</th>
-            <th>modifier</th>
-            <th>supprimer</th>
             <th>Gouts Musicaux</th>
             <th>Gouts</th>
-
-        <th>Ajout Passions</th>
+            <th>Ajout Passions</th>
             <th>Passions</th>
+            <th>modifier</th>
+            <th>supprimer</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($array as $row): ?>
+        <?php foreach ($data as $row):
+            $GoutsPrepared->execute([$row->id]);
+            $GoutsData = $GoutsPrepared->fetchAll(PDO::FETCH_OBJ);
+            
+            $PassionsPrepared->execute([$row->id]);
+            $PassionsData = $PassionsPrepared->fetchAll(PDO::FETCH_OBJ);
+            ?>
             <tr>
-                <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['nom']; ?></td>
-                <td><?php echo $row['prenom']; ?></td>
-                <td><?php echo $row['email']; ?></td>
-                <td><?php echo $row['telephone']; ?></td>
-                <td><?php echo $row['adresse']; ?></td>
-                <td><?php echo $row['age']; ?></td>
-                <td><?php echo $row['role']; ?></td>
-                <td><a href="modifier_utilisateur1.php?id=<?php echo $row['id']; ?> ">modifier</a></td>
-                <td><a href="supprimer_utilisateur.php?id=<?php echo $row['id']; ?> ">supprimer</a></td>
-                <td><a href="ajoutGouts.php?id=<?= $row['id']; ?>">Ajouter des gouts</a></td>
-                
-                <?php ?>
-                <td><p><?php foreach (goutsBoucle($row['id'], $db) as $textGout): ?> 
-                    <?= $textGout['style'].', ' ?>
-                    <?php endforeach; ?></p></td>
-
-                    
-                    <td><a href="ajout_passion.php?id=<?= $row['id']; ?>">Ajouter des Passion</a></td>   
-                    <td><p><?php foreach (passionsBoucle($row['id'], $db) as $textPassion): ?> 
-                    <?= $textPassion['nompassion'].', ' ?>
-                    <?php endforeach; ?></p></td> 
-
-
+                <td><?= $row->id; ?></td>
+                <td><?= $row->nom ?></td>
+                <td><?= $row->prenom ?></td>
+                <td><?= $row->email ?></td>
+                <td><?= $row->telephone ?></td>
+                <td><?= $row->adresse ?></td>
+                <td><?= $row->age ?></td>
+                <td><?= $row->role ?></td>
+                <td><a href="ajoutGouts.php?id=<?= $row->id ?>">Ajouter des gouts</a></td>
+                <td><p>
+                    <?php foreach ($GoutsData as $gout): ?>
+                    <?= $gout->style.', ' ?>
+                    <?php endforeach; ?>
+                </p></td>
+                <td><a href="ajout_passion.php?id=<?= $row->id ?>">Ajouter des Passion</a></td>   
+                <td><p>
+                    <?php foreach ($PassionsData as $passion): ?>
+                    <?= $passion->nompassion.', ' ?>
+                    <?php endforeach; ?>
+                </p></td> 
+                <td><a href="modifier_utilisateur1.php?id=<?= $row->id ?> ">modifier</a></td>
+                <td><a href="supprimer_utilisateur.php?id=<?= $row->id ?> ">supprimer</a></td>
                 </tr>
         <?php endforeach; ?>
     </tbody>

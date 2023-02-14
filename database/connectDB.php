@@ -24,6 +24,11 @@ class ConnectDB{
         return $this->pdo;
     }
 
+    public function prepare($statement) {
+        $req = $this->getPDO()->prepare($statement);
+        return $req;
+    }
+
     public function queryGET($statement) {
         $req = $this->getPDO()->query($statement);
         $datas = $req->fetchAll(PDO::FETCH_OBJ);

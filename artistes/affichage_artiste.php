@@ -9,7 +9,6 @@
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 $data = $db->queryGET('SELECT * FROM artiste');
-$array = json_decode(json_encode($data), true);
 ?>
 </head>
 <body>
@@ -28,15 +27,15 @@ $array = json_decode(json_encode($data), true);
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($array as $row): ?>
+        <?php foreach ($data as $row): ?>
             <tr>
-                <td><?= $row['id']; ?></td>
-                <td><?= $row['nom']; ?></td>
-                <td><?= $row['style']; ?></td>
-                <td><?= $row['reseauxSociaux']; ?></td>
-                <td><?= $row['nationalite']; ?></td>
-                <td><a href="modifier_artiste1.php?id=<?= $row['id']; ?> ">modifier</a></td>
-                <td><a href="supprimer_artiste1.php?id=<?= $row['id']; ?> ">supprimer</a></td>
+                <td><?= $row->id ?></td>
+                <td><?= $row->nom ?></td>
+                <td><?= $row->style ?></td>
+                <td><?= $row->reseauxSociaux ?></td>
+                <td><?= $row->nationalite ?></td>
+                <td><a href="modifier_artiste1.php?id=<?= $row->id ?> ">modifier</a></td>
+                <td><a href="supprimer_artiste1.php?id=<?= $row->id ?> ">supprimer</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
