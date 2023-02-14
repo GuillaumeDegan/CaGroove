@@ -80,7 +80,6 @@ $PassionsPrepared = $db->prepare($sqlPassionsRequest);
 </table>
 
 <a href="ajout_utilisateur.php">ajouter un utilisateur</a>
-<a href="../accueil.php">acceuil</a>
 
 
     
