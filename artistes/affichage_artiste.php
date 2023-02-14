@@ -21,7 +21,7 @@ $data = $db->queryGET('SELECT * FROM artiste');
             <th>Name</th>
             <th>Style</th>
             <th>Reseaux Sociaux</th>
-            <th>Nationaliter</th>
+            <th>Nationalité</th>
             <th>Modifier</th>
             <th>Supprimer</th>
         </tr>
