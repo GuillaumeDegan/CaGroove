@@ -21,7 +21,7 @@
   <?php foreach ($data as $row): ?>
     <fieldset>
       <legend>utilisateur</legend>
-      <form name="frmContact" method="post" action="modifier_utilisateur2.php?id=<?= $row['id']; ?>">
+      <form name="frmContact" method="post" action="modifier_utilisateur2.php?id=<?= $row->id ?>">
         
       <p>
           <label for="txtName">Nom </label>
@@ -37,7 +37,7 @@
         </p>
         <p>
           <label for="telephone">telephone</label>
-          <textarea name="telephone" id="telephone" value="<?= htmlspecialchars($row->telephone) ?>"></textarea>
+          <input type="text" name="telephone" id="telephone" value="<?= htmlspecialchars($row->telephone) ?>"></input>
         </p>
         <p>
           <label for="adresse">adresse</label>

@@ -33,7 +33,7 @@
         </p>
         <p>
           <label for="telephone">telephone</label>
-          <textarea name="telephone" id="telephone"></textarea>
+          <input type="text" name="telephone" id="telephone"></input>
         </p>
         <p>
           <label for="adresse">adresse</label>

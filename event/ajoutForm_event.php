@@ -11,7 +11,11 @@
       <legend>EVENT</legend>
       <form name="frmContact" method="post" action="ajout_event.php">
         <p>
-          <label for="places">Place </label>
+          <label for="nom">Nom</label>
+          <input type="text" name="nom" id="nom" />
+        </p>
+        <p>
+          <label for="places">Place</label>
           <input type="text" name="places" id="places" />
         </p>
         <p>

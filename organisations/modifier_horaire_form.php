@@ -16,12 +16,8 @@ $id = $_GET['id'];
 
 $horaire = $db->queryGET("SELECT organisation.id, horaires, artiste.nom as artiste, event.nom as event FROM organisation INNER JOIN artiste ON organisation.idArtiste = artiste.id INNER JOIN event ON organisation.idEvent = event.id WHERE organisation.id = $id");
 
-var_dump($arrayHoraire['horaires']);
-
 $artists = $db->queryGET('SELECT * FROM artiste');
 $events = $db->queryGET('SELECT * FROM event');
-
-
 
 
 ?>
@@ -29,7 +25,7 @@ $events = $db->queryGET('SELECT * FROM event');
 <body>
     <form action="modifier_horaire_send.php?id=<?= $id ?>" method="post">
         <label for="horaire">Horaire</label>
-        <input type="datetime-local" id="horaire" value='<?= $arrayHoraire['horaires'] ?>' name="horaire">
+        <input type="datetime-local" id="horaire" value='<?= htmlspecialchars($horaire[0]->horaires)  ?>' name="horaire">
 
         <label for="idArtiste"></label>
         <select name="idArtiste" id="idArtiste">
@@ -45,7 +41,7 @@ $events = $db->queryGET('SELECT * FROM event');
         <label for="idEvent"></label>
         <select name="idEvent" id="idEvent">
         <?php foreach ($events as $row): ?>
-            <?php if(htmlspecialchars($horaire->event) === htmlspecialchars($row->nom)): ?>
+            <?php if(htmlspecialchars($horaire[0]->event) === htmlspecialchars($row->nom)): ?>
                 <option selected value='<?= htmlspecialchars($row->id) ?>'><?= htmlspecialchars($row->nom) ?></option>
             <?php else : ?>
                 <option value='<?= htmlspecialchars($row->id)?>'><?= htmlspecialchars($row->nom) ?></option>

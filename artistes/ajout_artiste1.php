@@ -9,13 +9,8 @@ $style = $_POST['style'];
 $reseaux = $_POST['reseaux'];
 $nationaliter = $_POST['nationaliter'];
 
-$selected = $_POST["horaires"];
-foreach($selected as $horaire) {
-	$sql = "INSERT INTO `eventorganisation` (`idEvent`, `idHoraire`) VALUES (NULL, '$place', '$lieu', '$date'); ";
-}
-
 // database insert SQL code
-$sql="INSERT INTO `artiste` (`id`, `nom`, `style`, `idHoraire`, `reseauxSociaux`, `nationalite`) VALUES (NULL, '$txtName', '$style', '$horaire', '$reseaux', '$nationaliter'); ";
+$sql="INSERT INTO `artiste` (`id`, `nom`, `style`, `reseauxSociaux`, `nationalite`) VALUES (NULL, '$txtName', '$style', '$reseaux', '$nationaliter'); ";
 $db->querySend($sql);
 
 header('Location: affichage_artiste.php');

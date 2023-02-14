@@ -10,7 +10,7 @@ $id = $_GET['id'];
 $sql="DELETE FROM artiste WHERE `artiste`.`id` = $id ;";
 
 // insert in database 
-$db->querySend($sql)
+$db->querySend($sql);
 
 header('Location: affichage_artiste.php');
 ?>
