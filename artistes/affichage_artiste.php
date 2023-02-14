@@ -29,13 +29,13 @@ $data = $db->queryGET('SELECT * FROM artiste');
     <tbody>
         <?php foreach ($data as $row): ?>
             <tr>
-                <td><?= $row->id ?></td>
-                <td><?= $row->nom ?></td>
-                <td><?= $row->style ?></td>
-                <td><?= $row->reseauxSociaux ?></td>
-                <td><?= $row->nationalite ?></td>
-                <td><a href="modifier_artiste1.php?id=<?= $row->id ?> ">modifier</a></td>
-                <td><a href="supprimer_artiste1.php?id=<?= $row->id ?> ">supprimer</a></td>
+                <td><?= htmlspecialchars($row->id) ?></td>
+                <td><?= htmlspecialchars($row->nom) ?></td>
+                <td><?= htmlspecialchars($row->style) ?></td>
+                <td><?= htmlspecialchars($row->reseauxSociaux) ?></td>
+                <td><?= htmlspecialchars($row->nationalite) ?></td>
+                <td><a href="modifier_artiste1.php?id=<?= htmlspecialchars($row->id) ?> ">modifier</a></td>
+                <td><a href="supprimer_artiste1.php?id=<?= htmlspecialchars($row->id) ?> ">supprimer</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
