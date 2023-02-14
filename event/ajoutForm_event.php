@@ -24,7 +24,7 @@
         </p>
         <p>
           <label for="date">Date</label>
-          <input type="date" value="2017-06-01" name="date" id="date" />
+          <input type="date" name="date" id="date" />
         </p>
         <p>
           <input type="submit" name="Submit" id="Submit" value="Submit" />
