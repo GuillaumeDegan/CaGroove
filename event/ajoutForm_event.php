@@ -48,8 +48,8 @@
         </p>
         <p>
             <?php foreach($dataHoraires as $checkbox) : ?>
-              <label for="horaires[]"><?= $checkbox['horaires'] ?></label>
-              <input name="horaires[]" value="h_<?= $checkbox['id'] ?>" type="checkbox">
+              <label for="horaires[]"><?= htmlspecialchars($checkbox->horaires) ?></label>
+              <input name="horaires[]" value="h_<?= htmlspecialchars($checkbox->id) ?>" type="checkbox">
             <?php endforeach; ?>
         </p>
         <p>

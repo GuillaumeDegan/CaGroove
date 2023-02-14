@@ -37,18 +37,18 @@ mysqli_close($con);
   <?php foreach ($data as $row): ?>
     <fieldset>
       <legend>EVENT</legend>
-      <form name="frmContact" method="post" action="modifier_event2.php?id=<?php echo $row['id'];?>">
+      <form name="frmContact" method="post" action="modifier_event2.php?id=<?php echo htmlspecialchars($row->id);?>">
         <p>
           <label for="places"> place </label>
-          <input type="text" name="places" id="places" value="<?php echo $row['places'];?>"/>
+          <input type="text" name="places" id="places" value="<?php echo htmlspecialchars($row->places);?>"/>
         </p>
         <p>
           <label for="lieu"> lieu </label>
-          <input type="text" name="lieu" id="lieu" value="<?php echo $row['lieu'];?>" />
+          <input type="text" name="lieu" id="lieu" value="<?php echo htmlspecialchars($row->lieu);?>" />
         </p>
         <p>
           <label for="date">date </label>
-          <input input type="date" name="date" id="date"  value="<?php echo $row['date'];?>" />
+          <input input type="date" name="date" id="date"  value="<?php echo htmlspecialchars($row->date);?>" />
         </p>
         <p>
         

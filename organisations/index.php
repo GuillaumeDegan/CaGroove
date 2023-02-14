@@ -9,7 +9,7 @@
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 $data = $db->queryGET('SELECT organisation.id, horaires, artiste.nom as artiste, event.nom as event FROM organisation INNER JOIN artiste ON organisation.idArtiste = artiste.id INNER JOIN event ON organisation.idEvent = event.id');
-$array = json_decode(json_encode($data), true);
+
 ?>
    
 </head>
@@ -29,14 +29,14 @@ $array = json_decode(json_encode($data), true);
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($array as $row): ?>
+            <?php foreach ($data as $row): ?>
                 <tr>
-                    <td><?= $row['id']; ?></td>
-                    <td><?= $row['horaires']; ?></td>
-                    <td><?= $row['artiste']; ?></td>
-                    <td><?= $row['event']; ?></td>
-                    <td><a href="modifier_horaire_form.php?id=<?= $row['id'] ?>">Modifier</a></td>
-                    <td><a href="supprimer_horaire.php?id=<?= $row['id'] ?>">Supprimer</a></td>
+                    <td><?= htmlspecialchars($row->id); ?></td>
+                    <td><?= htmlspecialchars($row->horaires); ?></td>
+                    <td><?= htmlspecialchars($row->artiste); ?></td>
+                    <td><?= htmlspecialchars($row->event); ?></td>
+                    <td><a href="modifier_horaire_form.php?id=<?= htmlspecialchars($row->id) ?>">Modifier</a></td>
+                    <td><a href="supprimer_horaire.php?id=<?= htmlspecialchars($row->id) ?>">Supprimer</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

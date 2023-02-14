@@ -10,7 +10,7 @@
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 $data = $db->query('SELECT * FROM goutsmusicaux');
-$array = json_decode(json_encode($data), true);
+
 ?>
 
 </head>
@@ -29,12 +29,12 @@ $array = json_decode(json_encode($data), true);
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($array as $row): ?>
+                <?php foreach ($data as $row): ?>
                     <tr>
-                        <td><?= $row['id']; ?></td>
-                        <td><?= $row['style']; ?></td>
-                        <td><a href="modifierForm_gout.php?id=<?= $row['id']; ?>&style=<?= $row['style']; ?>">Modifier</a></td>
-                        <td><a href="requetes/supprimer_gout.php?id=<?= $row['id']; ?>">Supprimer</a></td>
+                        <td><?= htmlspecialchars($row->id); ?></td>
+                        <td><?= htmlspecialchars($row->style); ?></td>
+                        <td><a href="modifierForm_gout.php?id=<?= htmlspecialchars($row->id); ?>&style=<?= htmlspecialchars($row->style); ?>">Modifier</a></td>
+                        <td><a href="requetes/supprimer_gout.php?id=<?= htmlspecialchars($row->id); ?>">Supprimer</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -62,12 +62,12 @@ $array = json_decode(json_encode($data), true);
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($array as $row): ?>
+                <?php foreach ($data as $row): ?>
                     <tr>
-                        <td><?php echo $row['id']; ?></td>
-                        <td><?php echo $row['nom']; ?></td>
-                        <td><a href="modifierForm_passion.php?id=<?= $row['id']; ?>&passion=<?= $row['nom']; ?>">Modifier</a></td>
-                        <td><a href="requetes/supprimer_passion.php?id=<?= $row['id']; ?>">Supprimer</a></td>
+                        <td><?php echo htmlspecialchars($row->id); ?></td>
+                        <td><?php echo htmlspecialchars($row->nom); ?></td>
+                        <td><a href="modifierForm_passion.php?id=<?= htmlspecialchars($row->id); ?>&passion=<?= htmlspecialchars($row->nom); ?>">Modifier</a></td>
+                        <td><a href="requetes/supprimer_passion.php?id=<?= htmlspecialchars($row->id); ?>">Supprimer</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

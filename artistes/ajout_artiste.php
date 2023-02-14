@@ -45,8 +45,8 @@
         <p>
           <label for="horaire">horaire</label>
           <?php foreach($dataHoraires as $checkbox) : ?>
-            <input name="horaires[]" value="h_<?= $checkbox['id'] ?>" type="checkbox">
-            <label for="horaires[]"><?= $checkbox['horaires'] ?></label>
+            <input name="horaires[]" value="h_<?= htmlspecialchars($checkbox->id) ?>" type="checkbox">
+            <label for="horaires[]"><?= htmlspecialchars($checkbox->horaires) ?></label>
           <?php endforeach; ?>
         </p>
         <p>
