@@ -21,7 +21,7 @@ function goutsBoucle($id, $db) {
 }
 
 function passionsBoucle($id, $db) {
-    $data = $db->queryGET("SELECT passions.nom, utilisateurspassions.idUtilisateur from utilisateurspassions inner join passions on utilisateurspassions.idPassion = passions.id where utilisateurspassions.idUtilisateur = $id");
+    $data = $db->queryGET("SELECT passions.nom as nompassion, utilisateurspassions.idUtilisateur from utilisateurspassions inner join passions on utilisateurspassions.idPassion = passions.id where utilisateurspassions.idUtilisateur = $id");
     $arrayData = json_decode(json_encode($data), true);
     return $arrayData;
 
@@ -79,7 +79,7 @@ var_dump(goutsBoucle(2,$db))
                     
                     <td><a href="ajout_passion.php?id=<?= $row['id']; ?>">Ajouter des Passion</a></td>   
                     <td><p><?php foreach (passionsBoucle($row['id'], $db) as $textPassion): ?> 
-                    <?= $textPassion['style'].', ' ?>
+                    <?= $textPassion['nompassion'].', ' ?>
                     <?php endforeach; ?></p></td> 
 
 
