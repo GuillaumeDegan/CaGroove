@@ -7,17 +7,6 @@ $id = $_GET['id'];
 $Passion = $db->queryGET("SELECT * FROM passions");
 $arrayPassion = json_decode(json_encode($Passion), true);
 
-// // Select all data from the table
-// $sqlPassion = "SELECT * FROM goutsmusicaux";
-// $resultPassion = $db->querySend($sqlPassion);
-
-// // Fetch the data into an array
-// $dataPassion = array();
-// while ($row = mysqli_fetch_assoc($resultPassion)) {
-//     $dataPassion[] = $row;
-// }
-
-
 
 
 ?>
