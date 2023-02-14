@@ -7,27 +7,12 @@
 
     <?php
 
+require "../database/connectDB.php";
+$db = new ConnectDB('cagroove');
+
 $submit_id = $_GET['id'];
-// Connect to the database
-$con = mysqli_connect('localhost', 'root', '','cagroove');
 
-// Check connection
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-// Select all data from the table
-$sql = "SELECT * FROM artiste WHERE id = $submit_id ;";
-$result = mysqli_query($con, $sql);
-
-// Fetch the data into an array
-$data = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $data[] = $row;
-}
-
-// Close the connection
-mysqli_close($con);
+$data = $db->queryGET("SELECT * FROM artiste WHERE id = $submit_id ;")
 
 ?>
   </head>

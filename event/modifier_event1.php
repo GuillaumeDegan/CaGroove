@@ -6,28 +6,12 @@
 
 
     <?php
+    require "../database/connectDB.php";
+    $db = new ConnectDB('cagroove');
 
-$submit_id = $_GET['id'];
-// Connect to the database
-$con = mysqli_connect('localhost', 'root', '','cagroove');
+    $submit_id = $_GET['id'];
 
-// Check connection
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-// Select all data from the table
-$sql = "SELECT * FROM event WHERE id = $submit_id ;";
-$result = mysqli_query($con, $sql);
-
-// Fetch the data into an array
-$data = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $data[] = $row;
-}
-
-// Close the connection
-mysqli_close($con);
+    $db->queryGET("SELECT * FROM event WHERE id = $submit_id ;")
 ?>
   </head>
 
@@ -50,9 +34,6 @@ mysqli_close($con);
           <label for="date">date </label>
           <input input type="date" name="date" id="date"  value="<?php echo htmlspecialchars($row->date);?>" />
         </p>
-        <p>
-        
-        <p>&nbsp;</p>
         <p>
           <input type="submit" name="Submit" id="Submit" value="Submit" />
         </p>

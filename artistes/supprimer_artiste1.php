@@ -2,7 +2,6 @@
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
-// $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
 $id = $_GET['id'];
 
 // get the post records

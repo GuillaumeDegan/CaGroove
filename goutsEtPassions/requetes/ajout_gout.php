@@ -1,22 +1,12 @@
 <?php
 // database connection code
-// $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
 
-$con = mysqli_connect('localhost', 'root', '','cagroove');
+require "../database/connectDB.php";
+$db = new ConnectDB('cagroove');
 
-// get the post records
 $style = $_POST['style'];
 
-// database insert SQL code
-$sql="INSERT INTO `goutsmusicaux` (`id`, `style`) VALUES (NULL, '$style'); ";
-
-// insert in database 
-$rs=mysqli_query($con, $sql);
-
-if($rs)
-{
-	echo "Contact Records Inserted";
-} 
+$db->querySend("INSERT INTO `goutsmusicaux` (`id`, `style`) VALUES (NULL, '$style'); ")
 
 ?>
 

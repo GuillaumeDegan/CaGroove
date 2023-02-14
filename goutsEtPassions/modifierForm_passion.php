@@ -1,16 +1,4 @@
 <?php
-// Connect to the database
-$con = mysqli_connect('localhost', 'root', '','cagroove');
-
-// Check connection
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-
-// Close the connection
-mysqli_close($con);
-
 $id = $_GET['id'];
 $passion = $_GET['passion'];
 ?>

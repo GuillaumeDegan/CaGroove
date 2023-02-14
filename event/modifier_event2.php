@@ -1,6 +1,5 @@
 <?php
 // database connection code
-// $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
 $id = $_GET['id'];
 
 require "../database/connectDB.php";
