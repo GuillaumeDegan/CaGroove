@@ -29,12 +29,12 @@ $data = $db->queryGET('SELECT * FROM event');
     <tbody>
         <?php foreach ($data as $row): ?>
             <tr>
-                <td><?php echo htmlspecialchars($row->id);?></td>
-                <td><?php echo htmlspecialchars($row->places); ?></td>
-                <td><?php echo htmlspecialchars($row->lieu); ?></td>
-                <td><?php echo htmlspecialchars($row->date); ?></td>
-                <td><a href="modifier_event1.php?id=<?php echo htmlspecialchars($row->id); ?> ">modifier</a></td>
-                <td><a href="supprimer_event1.php?id=<?php echo htmlspecialchars($row->id); ?> ">suppression</a></td>
+                <td><?= htmlspecialchars($row->id);?></td>
+                <td><?= htmlspecialchars($row->places); ?></td>
+                <td><?= htmlspecialchars($row->lieu); ?></td>
+                <td><?= htmlspecialchars($row->date); ?></td>
+                <td><a href="modifier_event1.php?id=<?= htmlspecialchars($row->id); ?> ">modifier</a></td>
+                <td><a href="supprimer_event1.php?id=<?= htmlspecialchars($row->id); ?> ">suppression</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
