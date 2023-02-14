@@ -9,12 +9,15 @@
     <?php
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-$data = $db->query('SELECT * FROM goutsmusicaux');
+$dataGouts = $db->queryGET('SELECT * FROM goutsmusicaux');
+
+$dataPassions = $db->queryGET('SELECT * FROM passions');
 
 ?>
 
 </head>
 <body>
+<?php include '../header/header.php';?>
 
 <div style="display: flex; width: 100%; justify-content: space-around;">
     <div>
@@ -29,7 +32,7 @@ $data = $db->query('SELECT * FROM goutsmusicaux');
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $row): ?>
+                <?php foreach ($dataGouts as $row): ?>
                     <tr>
                         <td><?= htmlspecialchars($row->id); ?></td>
                         <td><?= htmlspecialchars($row->style); ?></td>
@@ -42,7 +45,7 @@ $data = $db->query('SELECT * FROM goutsmusicaux');
         <br />
 
         <h3>Ajouter un gout musical :</h3>
-        <form method="post" action="ajout_gout.php">
+        <form method="post" action="requetes/ajout_gout.php">
             <label for="style">Style de musique :</label>
             <input name="style" type="text">
             <input type="submit">
@@ -62,7 +65,7 @@ $data = $db->query('SELECT * FROM goutsmusicaux');
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $row): ?>
+                <?php foreach ($dataPassions as $row): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($row->id); ?></td>
                         <td><?php echo htmlspecialchars($row->nom); ?></td>
@@ -75,7 +78,7 @@ $data = $db->query('SELECT * FROM goutsmusicaux');
         <br />
 
         <h3>Ajouter une passion :</h3>
-        <form method="post" action="ajout_passion.php">
+        <form method="post" action="requetes/ajout_passion.php">
             <label for="passion">Nom de la passion :</label>
             <input name="passion" type="text">
             <input type="submit">

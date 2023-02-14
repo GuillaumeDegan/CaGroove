@@ -41,7 +41,6 @@ $data = $db->queryGET('SELECT * FROM event');
 </table>
 
 <a href="ajoutForm_event.php">ajouter un event</a>
-<a href="../accueil.php">acceuil</a>
     
 </body>
 </html>

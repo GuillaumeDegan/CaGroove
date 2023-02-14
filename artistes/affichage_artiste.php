@@ -42,7 +42,6 @@ $data = $db->queryGET('SELECT * FROM artiste');
 </table>
 
 <a href="ajout_artiste.php">ajouter un artiste</a>
-<a href="../accueil.php">acceuil</a>
 
 
     

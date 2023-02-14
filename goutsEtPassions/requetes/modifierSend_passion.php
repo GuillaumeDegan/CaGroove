@@ -1,15 +1,13 @@
 <?php
 // database connection code
-require "../database/connectDB.php";
+require "../../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
 // get the post records
-$id = $_POST['id'];
+$id = $_GET['id'];
 $passion = $_POST['passion'];
 
-$db->querySend("UPDATE `passions` SET `nom` = '$passion', `id` = $id WHERE `id` = '$id';")
+$db->querySend("UPDATE `passions` SET `nom` = '$passion' WHERE `id` = '$id';");
 
+header('Location: ../index.php');
 ?>
-
-<br />
-<a href="../index.php">Retour</a>

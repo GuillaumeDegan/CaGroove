@@ -14,6 +14,7 @@
             <a href="../event/affichage_event.php">Event</a>
             <a href="../artistes/affichage_artiste.php">Artiste</a>
             <a href="../organisations/index.php">Organisation</a>
+            <a href="../goutsEtPassions/index.php">Gouts&Passions</a>
         </div>
     </nav>
     

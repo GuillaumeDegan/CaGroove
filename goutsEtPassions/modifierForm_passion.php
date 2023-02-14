@@ -4,11 +4,9 @@ $passion = $_GET['passion'];
 ?>
 </head>
 <body>
-<?php include 'header/header.php';?>
+<?php include '../header/header.php';?>
 <h3>Modification</h3>
-<form method="post" action="requetes/modifierSend_gout.php">
-    <label for="id">Id de la passion :</label>
-    <input value="<?= $id ?>" name="id" type="number">
+<form method="post" action="requetes/modifierSend_gout.php?id=<?= $id ?>">
     <label for="passion">Nom de la passion :</label>
     <input value="<?= $passion ?>" name="passion" type="text">
     <input type="submit">
