@@ -9,7 +9,7 @@
   <?php include '../header/header.php';?>
     <fieldset>
       <legend>ARTISTE</legend>
-      <form name="frmContact" method="post" action="ajout_artiste.php">
+      <form name="frmContact" method="post" action="ajout_artiste1.php">
         <p>
           <label for="txtName">Nom </label>
           <input type="text" name="txtName" id="txtName" />

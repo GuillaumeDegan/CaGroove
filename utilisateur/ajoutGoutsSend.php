@@ -12,4 +12,5 @@ foreach($goutsArray as $gout) {
 }
 
 var_dump($goutsArray);
+header('Location: affichage_utilisateur.php');
 

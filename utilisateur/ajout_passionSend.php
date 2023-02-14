@@ -13,4 +13,5 @@ foreach($passionArray as $passion) {
 }
 
 var_dump($passionArray);
+header('Location: affichage_utilisateur.php');
 
