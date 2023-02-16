@@ -9,7 +9,7 @@ $arrayPassionTotal = json_decode(json_encode($passionTotal), true);
 
 
 $Passion = $db->queryGET("SELECT * FROM passions inner join utilisateurspassions on passions.id = utilisateurspassions.idPassion where utilisateurspassions.idUtilisateur = $id ");
-var_dump($Passion);
+
 $arrayPassion = json_decode(json_encode($Passion), true);
 
 

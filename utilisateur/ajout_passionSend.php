@@ -12,6 +12,5 @@ foreach($passionArray as $passion) {
     $db->querySend($sql);
 }
 
-var_dump($passionArray);
 header('Location: affichage_utilisateur.php');
 
