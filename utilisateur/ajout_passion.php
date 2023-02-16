@@ -13,9 +13,7 @@ $token = NoCSRF::generate( 'token' );
 $id = $_GET['id'];
 
 // récupération de toute les passions
-$Passion = $db->queryGET("SELECT nom, id FROM passions");
-$arrayPassion = json_decode(json_encode($Passion), true);
-
+$passions = $db->queryGET("SELECT nom, id FROM passions");
 
 
 ?>
