@@ -12,10 +12,10 @@
     // connexion bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-
 // recuperation de tous les gouts et de toutes les passions
-$dataGouts = $db->queryGET('SELECT * FROM goutsmusicaux');
-$dataPassions = $db->queryGET('SELECT * FROM passions');
+$dataGouts = $db->queryGET('SELECT id,style FROM goutsmusicaux');
+
+$dataPassions = $db->queryGET('SELECT nom,id FROM passions');
 
 ?>
 

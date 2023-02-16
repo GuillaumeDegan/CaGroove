@@ -11,9 +11,8 @@
     // appel bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-
 // Récupération de tous les artistes
-$data = $db->queryGET('SELECT * FROM artiste');
+$data = $db->queryGET('SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste');
 ?>
 </head>
 <body>

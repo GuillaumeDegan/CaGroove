@@ -19,8 +19,8 @@
     // récuperation de l'id de l'evenement à modifier
     $submit_id = $_GET['id'];
 
-    // récupération de l'event en question
-    $data = $db->queryGET("SELECT * FROM event WHERE id = $submit_id ;")
+     // récupération de l'event en question
+    $data = $db->queryGET("SELECT id,nom,places,lieu,date FROM event WHERE id = $submit_id ;")
 ?>
   </head>
 

@@ -4,12 +4,12 @@ $db = new ConnectDB('cagroove');
 
 $id = $_GET['id'];
 
-$passionTotal = $db->queryGet("SELECT * FROM passions");
+$passionTotal = $db->queryGet("SELECT id,nom FROM passions");
 $arrayPassionTotal = json_decode(json_encode($passionTotal), true);
 
 
-$Passion = $db->queryGET("SELECT * FROM passions inner join utilisateurspassions on passions.id = utilisateurspassions.idPassion where utilisateurspassions.idUtilisateur = $id ");
-var_dump($Passion);
+$Passion = $db->queryGET("SELECT id,nom FROM passions inner join utilisateurspassions on passions.id = utilisateurspassions.idPassion where utilisateurspassions.idUtilisateur = $id ");
+
 $arrayPassion = json_decode(json_encode($Passion), true);
 
 

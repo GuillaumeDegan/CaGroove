@@ -13,7 +13,9 @@ $token = NoCSRF::generate( 'token' );
 $id = $_GET['id'];
 
 // récupération de otus les gouts musicaux
-$Gouts = $db->queryGET("SELECT * FROM goutsmusicaux");
+$Gouts = $db->queryGET("SELECT id,style FROM goutsmusicaux");
+
+$arrayGouts = json_decode(json_encode($Gouts), true);
 
 ?>
 <?php include '../header/header.php';?>

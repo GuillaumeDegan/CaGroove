@@ -21,7 +21,7 @@ $token = NoCSRF::generate( 'token' );
 $submit_id = $_GET['id'];
 
 //récupération de l'artiste en question
-$data = $db->queryGET("SELECT * FROM artiste WHERE id = $submit_id ;")
+$data = $db->queryGET("SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste WHERE id = $submit_id ;");
 
 ?>
   </head>

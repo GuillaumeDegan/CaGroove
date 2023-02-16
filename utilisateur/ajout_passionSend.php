@@ -30,3 +30,5 @@ if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
     echo "<a href='affichage_event.php'>Retour</a>";
 }
 
+header('Location: affichage_utilisateur.php');
+
