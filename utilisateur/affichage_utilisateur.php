@@ -43,8 +43,10 @@ $PassionsPrepared = $db->prepare($sqlPassionsRequest);
             <th>Rôle</th>
             <th>Gouts Musicaux</th>
             <th>Gouts</th>
+            <th>modifier Gouts</th>
             <th>Ajout Passions</th>
             <th>Passions</th>
+            <th>modifier passion</th>
             <th>modifier</th>
             <th>supprimer</th>
         </tr>
@@ -75,6 +77,7 @@ $PassionsPrepared = $db->prepare($sqlPassionsRequest);
                     <?= $gout->style.', ' ?>
                     <?php endforeach; ?>
                 </p></td>
+                <td><a href="modif_gout_form.php?id=<?= $row->id ?>">Modifier des gouts</a></td>
                 <td><a href="ajout_passion.php?id=<?= $row->id ?>">Ajouter des Passion</a></td>   
                 <!-- Boucle qui concatène toutes les passions de l'utilisateur séparées d'une virgule -->
                 <td><p>
@@ -82,6 +85,7 @@ $PassionsPrepared = $db->prepare($sqlPassionsRequest);
                     <?= $passion->nompassion.', ' ?>
                     <?php endforeach; ?>
                 </p></td> 
+                <td><a href="modif_passion_form.php?id=<?= $row->id ?>">modifier passion</a></td>
                 <td><a href="modifier_utilisateur1.php?id=<?= $row->id ?> ">modifier</a></td>
                 <td><a href="supprimer_utilisateur.php?id=<?= $row->id ?> ">supprimer</a></td>
                 </tr>
