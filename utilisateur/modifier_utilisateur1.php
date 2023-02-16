@@ -23,34 +23,34 @@
 
   <body>
   <?php include '../header/header.php';?>
-  <?php foreach ($data as $row): ?>
+
     <fieldset>
       <legend>utilisateur</legend>
-      <form name="frmContact" method="post" action="modifier_utilisateur2.php?id=<?= $row->id ?>">
+      <form name="frmContact" method="post" action="modifier_utilisateur2.php?id=<?= $data[0]->id ?>">
         
       <p>
           <label for="txtName">Nom </label>
-          <input type="text" name="txtName" id="txtName" value="<?= htmlspecialchars($row->nom)  ?>" />
+          <input type="text" name="txtName" id="txtName" value="<?= htmlspecialchars($data[0]->nom)  ?>" />
         </p>
         <p>
           <label for="prenom">prenom</label>
-          <input type="text" name="prenom" id="prenom" value="<?= htmlspecialchars($row->prenom) ?>"/>
+          <input type="text" name="prenom" id="prenom" value="<?= htmlspecialchars($data[0]->prenom) ?>"/>
         </p>
         <p>
           <label for="email">email</label>
-          <input type="text" name="email" id="email" value="<?= htmlspecialchars($row->email) ?>"/>
+          <input type="text" name="email" id="email" value="<?= htmlspecialchars($data[0]->email) ?>"/>
         </p>
         <p>
           <label for="telephone">telephone</label>
-          <input type="text" name="telephone" id="telephone" value="<?= htmlspecialchars($row->telephone) ?>"></input>
+          <input type="text" name="telephone" id="telephone" value="<?= htmlspecialchars($data[0]->telephone) ?>"></input>
         </p>
         <p>
           <label for="adresse">adresse</label>
-          <input type="text" name="adresse" id="adresse" value="<?= htmlspecialchars($row->adresse) ?>"/>
+          <input type="text" name="adresse" id="adresse" value="<?= htmlspecialchars($data[0]->adresse) ?>"/>
         </p>
         <p>
           <label for="age">age</label>
-          <input type="text" name="age" id="age" value="<?= htmlspecialchars($row->age) ?>" />
+          <input type="text" name="age" id="age" value="<?= htmlspecialchars($data[0]->age) ?>" />
         </p>
         <p>
           <label for="idRole">idRole</label>
@@ -63,6 +63,6 @@
         </p>
       </form>
     </fieldset>
-    <?php endforeach; ?>
+
   </body>
 </html>
