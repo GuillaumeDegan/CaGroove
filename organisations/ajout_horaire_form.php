@@ -20,6 +20,7 @@ $events = $db->queryGET('SELECT * FROM event');
 ?>
 
 <body>
+<?php include '../header/header.php';?>
     <form action="ajout_horaire_send.php" method="post">
         <label for="horaire">Horaire</label>
         <input type="datetime-local" id="horaire" name="horaire">

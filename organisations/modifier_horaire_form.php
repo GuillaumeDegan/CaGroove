@@ -23,6 +23,7 @@ $events = $db->queryGET('SELECT * FROM event');
 ?>
 
 <body>
+<?php include '../header/header.php';?>
     <form action="modifier_horaire_send.php?id=<?= $id ?>" method="post">
         <label for="horaire">Horaire</label>
         <input type="datetime-local" id="horaire" value='<?= htmlspecialchars($horaire[0]->horaires)  ?>' name="horaire">
