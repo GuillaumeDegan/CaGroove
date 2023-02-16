@@ -12,7 +12,7 @@ $db = new ConnectDB('cagroove');
 
 $submit_id = $_GET['id'];
 
-$data = $db->queryGET("SELECT * FROM artiste WHERE id = $submit_id ;")
+$data = $db->queryGET("SELECT * FROM artiste WHERE id = $submit_id ;");
 
 ?>
   </head>
@@ -20,26 +20,26 @@ $data = $db->queryGET("SELECT * FROM artiste WHERE id = $submit_id ;")
 
   <body>
   <?php include '../header/header.php';?>
-  <?php foreach ($data as $row): ?>
+ 
     <fieldset>
       <legend>EVENT</legend>
-      <form name="frmContact" method="post" action="modifier_artiste2.php?id=<?php echo htmlspecialchars($row->id); ?>">
+      <form name="frmContact" method="post" action="modifier_artiste2.php?id=<?php echo htmlspecialchars($data[0]->id); ?>">
         
       <p>
           <label for="txtName">Nom </label>
-          <input type="text" name="txtName" id="txtName" value="<?php echo htmlspecialchars($row->nom); ?>" />
+          <input type="text" name="txtName" id="txtName" value="<?php echo htmlspecialchars($data[0]->nom); ?>" />
         </p>
         <p>
           <label for="style">style</label>
-          <input type="text" name="style" id="style" value="<?php echo htmlspecialchars($row->style); ?>" />
+          <input type="text" name="style" id="style" value="<?php echo htmlspecialchars($data[0]->style); ?>" />
         </p>
         <p>
           <label for="reseaux">reseaux sociaux</label>
-          <input type="text" name="reseaux" id="reseaux" value="<?php echo htmlspecialchars($row->reseauxSociaux); ?>"></input>
+          <input type="text" name="reseaux" id="reseaux" value="<?php echo htmlspecialchars($data[0]->reseauxSociaux); ?>"></input>
         </p>
         <p>
           <label for="nationaliter">nationaliter</label>
-          <input type="text" name="nationaliter" id="nationaliter" value="<?php echo htmlspecialchars($row->nationalite); ?>"/>
+          <input type="text" name="nationaliter" id="nationaliter" value="<?php echo htmlspecialchars($data[0]->nationalite); ?>"/>
         </p>
         <p>
 
@@ -49,6 +49,6 @@ $data = $db->queryGET("SELECT * FROM artiste WHERE id = $submit_id ;")
         </p>
       </form>
     </fieldset>
-    <?php endforeach; ?>
+
   </body>
 </html>
