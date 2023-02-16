@@ -27,8 +27,11 @@ $arrayPassion = json_decode(json_encode($Passion), true);
                 }
             }
         ?>
+        
+
+        <input type="checkbox" name="passion[]" value="g_<?= $passion['id'] ?>" <?= $checked ?>>
             <label for="passion[]"><?= $passion['nom'] ?></label>
-            <input type="checkbox" name="passion[]" value="g_<?= $passion['id'] ?>" <?= $checked ?>>
+
         <?php endforeach; ?>
         <input type="submit">
     </form>
