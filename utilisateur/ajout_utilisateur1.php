@@ -14,11 +14,20 @@ $adresse = $_POST['adresse'];
 $age = $_POST['age'];
 $idRole = $_POST['Role'];
 
-// création et envoie de la requete 
-$sql="INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `email`, `telephone`, `adresse`, `age`, `idRole`) VALUES (NULL, '$txtName', '$prenom', '$email', '$telephone', '$adresse','$age', '$idRole'); ";
-$db->querySend($sql);
+// vérification du token 
+require "../nocsrf.php";
+if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
+    // création et envoie de la requete 
+    $sql="INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `email`, `telephone`, `adresse`, `age`, `idRole`) VALUES (NULL, '$txtName', '$prenom', '$email', '$telephone', '$adresse','$age', '$idRole'); ";
+    $db->querySend($sql);
 
-// redirection
-header('Location: affichage_utilisateur.php');
+    // redirection
+    header('Location: affichage_utilisateur.php');
+} else {
+    // affichage d'erreur si token différent
+    echo "Erreur de token";
+    echo "<br />";
+    echo "<a href='affichage_event.php'>Retour</a>";
+}
 
 ?>

@@ -1,5 +1,13 @@
 <!-- Page de formulaire d'ajout d'evenement -->
 
+<?php 
+
+// génération du token
+require "../nocsrf.php";
+$token = NoCSRF::generate( 'token' );
+
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -28,6 +36,7 @@
           <label for="date">Date</label>
           <input type="date" name="date" id="date" />
         </p>
+        <input type="hidden" name="token" value="<?= $token ?>" />
         <p>
           <input type="submit" name="Submit" id="Submit" value="Submit" />
         </p>

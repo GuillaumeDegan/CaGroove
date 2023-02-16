@@ -1,5 +1,13 @@
 <!-- Page d'ajout d'un artiste -->
 
+<?php 
+
+// génération du token
+require "../nocsrf.php";
+$token = NoCSRF::generate( 'token' );
+
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -28,8 +36,7 @@
           <label for="nationaliter">nationaliter</label>
           <input type="text" name="nationaliter" id="nationaliter" />
         </p>
-
-        <p>&nbsp;</p>
+        <input type="hidden" name="token" value="<?= $token ?>" />
         <p>
           <input type="submit" name="Submit" id="Submit" value="Submit" />
         </p>

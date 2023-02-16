@@ -11,12 +11,20 @@ $horaire = $_POST['horaire'];
 $idArtiste = $_POST['idArtiste'];
 $idEvent = $_POST['idEvent'];
 
+// vérification du token 
+require "../nocsrf.php";
+if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
+    // création de la requete et envoie
+    $sql="INSERT INTO `organisation` (`horaires`, `idArtiste`, `idEvent`) VALUES ('$horaire', '$idArtiste', '$idEvent'); ";
+    $db->querySend($sql);
 
-// création de la requete et envoie
-$sql="INSERT INTO `organisation` (`horaires`, `idArtiste`, `idEvent`) VALUES ('$horaire', '$idArtiste', '$idEvent'); ";
-$db->querySend($sql);
-
-// redirection
-header('Location: index.php');
+    // redirection
+    header('Location: index.php');
+} else {
+    // affichage d'erreur si token différent
+    echo "Erreur de token";
+    echo "<br />";
+    echo "<a href='affichage_event.php'>Retour</a>";
+}
 
 ?>

@@ -5,6 +5,10 @@
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
+// génération du token
+require "../nocsrf.php";
+$token = NoCSRF::generate( 'token' );
+
 // récupération de l'id de l'user en question
 $id = $_GET['id'];
 
@@ -20,6 +24,7 @@ $passions = $db->queryGET("SELECT * FROM passions");
             <label for="passion[]"><?= $passion->nom ?></label>
             <input type="checkbox" name="passion[]" value="g_<?= $passion->id ?>">
         <?php endforeach; ?>
+        <input type="hidden" name="token" value="<?= $token ?>" />
         <input type="submit">
     </form>
 </div>

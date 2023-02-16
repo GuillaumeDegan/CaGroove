@@ -9,6 +9,10 @@
 
   <?php
 
+  // génération du token
+  require "../nocsrf.php";
+  $token = NoCSRF::generate( 'token' );
+
 // connexiojn bdd
   require "../database/connectDB.php";
   $db = new ConnectDB('cagroove');
@@ -58,7 +62,7 @@
           </select>
         </p>
 
-        <p>&nbsp;</p>
+        <input type="hidden" name="token" value="<?= $token ?>" />
         <p>
           <input type="submit" name="Submit" id="Submit" value="Submit" />
         </p>

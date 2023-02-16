@@ -14,6 +14,10 @@
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
+// génération du token
+require "../nocsrf.php";
+$token = NoCSRF::generate( 'token' );
+
 // recuperation de tous les artistes et evenements
 $artists = $db->queryGET('SELECT * FROM artiste');
 $events = $db->queryGET('SELECT * FROM event');
@@ -44,6 +48,7 @@ $events = $db->queryGET('SELECT * FROM event');
             <option value='<?= htmlspecialchars($row->id) ?>'><?= htmlspecialchars($row->nom) ?></option>
         <?php endforeach; ?>
         </select>
+        <input type="hidden" name="token" value="<?= $token ?>" />
 
         <input type="submit" value="Ajouter">
     </form>

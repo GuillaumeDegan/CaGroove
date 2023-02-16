@@ -13,6 +13,10 @@
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
+// génération du token
+require "../nocsrf.php";
+$token = NoCSRF::generate( 'token' );
+
 // récupération de l'id de l'artiste à modifier
 $submit_id = $_GET['id'];
 
@@ -48,7 +52,7 @@ $data = $db->queryGET("SELECT * FROM artiste WHERE id = $submit_id ;")
         </p>
         <p>
 
-        <p>&nbsp;</p>
+        <input type="hidden" name="token" value="<?= $token ?>" />
         <p>
           <input type="submit" name="Submit" id="Submit" value="Submit" />
         </p>

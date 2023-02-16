@@ -12,6 +12,10 @@
     require "../database/connectDB.php";
     $db = new ConnectDB('cagroove');
 
+    // génération du token
+    require "../nocsrf.php";
+    $token = NoCSRF::generate( 'token' );
+
     // récuperation de l'id de l'evenement à modifier
     $submit_id = $_GET['id'];
 
@@ -43,6 +47,7 @@
           <label for="date">date </label>
           <input input type="date" name="date" id="date"  value="<?php echo htmlspecialchars($data[0]->date);?>" />
         </p>
+        <input type="hidden" name="token" value="<?= $token ?>" />
         <p>
           <input type="submit" name="Submit" id="Submit" value="Submit" />
         </p>
