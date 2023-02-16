@@ -40,7 +40,7 @@ $data = $db->queryGET('SELECT organisation.id, horaires, artiste.nom as artiste,
                     <td><?= htmlspecialchars($row->horaires); ?></td>
                     <td><?= htmlspecialchars($row->artiste); ?></td>
                     <td><?= htmlspecialchars($row->event); ?></td>
-                    <td><a href="modifier_horaire_form.php?id=<?= htmlspecialchars($row->id) ?>">Modifier</a></td>
+                    <td><a href="modifier_horaire_form.php?idHoraire=<?= htmlspecialchars($row->id); ?>&artist=<?= htmlspecialchars($row->artiste); ?>&event=<?= htmlspecialchars($row->event); ?>">Modifier</a></td>
                     <td><a href="supprimer_horaire.php?id=<?= htmlspecialchars($row->id) ?>">Supprimer</a></td>
                 </tr>
             <?php endforeach; ?>
