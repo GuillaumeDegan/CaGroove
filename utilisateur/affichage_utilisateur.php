@@ -1,3 +1,5 @@
+<!-- Page d'affichage des utilisateurs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +9,19 @@
     <title>Document</title>
 
     <?php
+    // connexion bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
+// récupération de tous les utilisateurs
 $data = $db->queryGET('SELECT utilisateur.id as id, utilisateur.nom as nom, prenom, email, telephone, adresse, age, role.nom  as role FROM utilisateur 
 INNER JOIN role ON utilisateur.idRole = role.id group by utilisateur.nom ');
 
+// préparation de la requete de récupération des gouts
 $sqlGoutsRequest = "SELECT goutsmusicaux.style from utilisateursgouts inner join goutsmusicaux on utilisateursgouts.idGout = goutsmusicaux.id where utilisateursgouts.idUtilisateur = ?";
 $GoutsPrepared = $db->prepare($sqlGoutsRequest);
 
+// préparation de la requete de récupération des passions
 $sqlPassionsRequest = "SELECT passions.nom as nompassion, utilisateurspassions.idUtilisateur from utilisateurspassions inner join passions on utilisateurspassions.idPassion = passions.id where utilisateurspassions.idUtilisateur = ?";
 $PassionsPrepared = $db->prepare($sqlPassionsRequest);
 
@@ -45,9 +51,11 @@ $PassionsPrepared = $db->prepare($sqlPassionsRequest);
     </thead>
     <tbody>
         <?php foreach ($data as $row):
+            // execution de la requete des gouts et récupération des gouts selon l'utilisateur passé
             $GoutsPrepared->execute([$row->id]);
             $GoutsData = $GoutsPrepared->fetchAll(PDO::FETCH_OBJ);
             
+            // execution de la requete des passions et récupération des passions selon l'utilisateur passé
             $PassionsPrepared->execute([$row->id]);
             $PassionsData = $PassionsPrepared->fetchAll(PDO::FETCH_OBJ);
             ?>
@@ -61,12 +69,14 @@ $PassionsPrepared = $db->prepare($sqlPassionsRequest);
                 <td><?= $row->age ?></td>
                 <td><?= $row->role ?></td>
                 <td><a href="ajoutGouts.php?id=<?= $row->id ?>">Ajouter des gouts</a></td>
+                <!-- Boucle qui concatène tous les gouts de l'utilisateur séparés d'une virgule -->
                 <td><p>
                     <?php foreach ($GoutsData as $gout): ?>
                     <?= $gout->style.', ' ?>
                     <?php endforeach; ?>
                 </p></td>
                 <td><a href="ajout_passion.php?id=<?= $row->id ?>">Ajouter des Passion</a></td>   
+                <!-- Boucle qui concatène toutes les passions de l'utilisateur séparées d'une virgule -->
                 <td><p>
                     <?php foreach ($PassionsData as $passion): ?>
                     <?= $passion->nompassion.', ' ?>

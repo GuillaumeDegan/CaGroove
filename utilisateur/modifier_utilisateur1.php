@@ -1,3 +1,5 @@
+<!-- Page de formulaire de modification d'un utilisateur -->
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -6,11 +8,14 @@
 
 
     <?php
+    // connexion bdd
     require "../database/connectDB.php";
     $db = new ConnectDB('cagroove');
 
+    // récupération de l'id de l'user
     $submit_id = $_GET['id'];
 
+    // récupération des données de l'user
     $data = $db->queryGET("SELECT * FROM utilisateur WHERE id = $submit_id ;");
 ?>
   </head>

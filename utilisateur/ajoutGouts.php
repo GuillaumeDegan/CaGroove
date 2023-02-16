@@ -1,20 +1,24 @@
+<!-- Page de formulaire d'ajout de nouveau gouts à un user -->
+
 <?php 
+// connexion bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
+// récupération de l'id de l'user
 $id = $_GET['id'];
 
+// récupération de otus les gouts musicaux
 $Gouts = $db->queryGET("SELECT * FROM goutsmusicaux");
-
-$arrayGouts = json_decode(json_encode($Gouts), true);
 
 ?>
 <?php include '../header/header.php';?>
 <div>
     <form method="post" action="ajoutGoutsSend.php?id=<?= $id ?>">
-        <?php foreach($arrayGouts as $gout) :?>
-            <label for="gouts[]"><?= $gout['style'] ?></label>
-            <input type="checkbox" name="gouts[]" value="g_<?= $gout['id'] ?>">
+    <!-- Boucle qui affiche tous les gouts dans des checkboxs -->
+        <?php foreach($Gouts as $gout) :?>
+            <label for="gouts[]"><?= $gout->style ?></label>
+            <input type="checkbox" name="gouts[]" value="g_<?= $gout->id ?>">
         <?php endforeach; ?>
         <input type="submit">
     </form>

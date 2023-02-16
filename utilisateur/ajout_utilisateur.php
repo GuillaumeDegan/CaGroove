@@ -1,3 +1,5 @@
+<!-- Page du formulaire d'ajout d'utilisateur -->
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -7,10 +9,12 @@
 
   <?php
 
+// connexiojn bdd
   require "../database/connectDB.php";
   $db = new ConnectDB('cagroove');
-  $data = $db->queryGET('SELECT * FROM role');
 
+  // récupération de tous les roles
+  $data = $db->queryGET('SELECT * FROM role');
 
   ?>
 
@@ -47,6 +51,7 @@
           <label for="Role">Rôle</label>
           <select name="Role">
             <option>Choisir un rôle</option>
+            <!-- Boucle qui affiche tous les rôles dans un select -->
             <?php foreach($data as $option): ?>
               <option value="<?= htmlspecialchars($option->id) ?>"><?= htmlspecialchars($option->nom) ?></option>
             <?php endforeach; ?>
