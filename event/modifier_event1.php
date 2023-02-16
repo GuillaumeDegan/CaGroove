@@ -11,7 +11,7 @@
 
     $submit_id = $_GET['id'];
 
-    $data = $db->queryGET("SELECT * FROM event WHERE id = $submit_id ;")
+    $data = $db->queryGET("SELECT id,nom,places,lieu,date FROM event WHERE id = $submit_id ;")
 ?>
   </head>
 

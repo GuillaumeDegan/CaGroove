@@ -12,7 +12,7 @@ $db = new ConnectDB('cagroove');
 
 $submit_id = $_GET['id'];
 
-$data = $db->queryGET("SELECT * FROM artiste WHERE id = $submit_id ;");
+$data = $db->queryGET("SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste WHERE id = $submit_id ;");
 
 ?>
   </head>

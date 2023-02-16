@@ -9,7 +9,7 @@
 
   require "../database/connectDB.php";
   $db = new ConnectDB('cagroove');
-  $data = $db->queryGET('SELECT * FROM role');
+  $data = $db->queryGET('SELECT id, nom FROM role');
 
 
   ?>

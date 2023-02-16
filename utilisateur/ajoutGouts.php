@@ -4,7 +4,7 @@ $db = new ConnectDB('cagroove');
 
 $id = $_GET['id'];
 
-$Gouts = $db->queryGET("SELECT * FROM goutsmusicaux");
+$Gouts = $db->queryGET("SELECT id,style FROM goutsmusicaux");
 
 $arrayGouts = json_decode(json_encode($Gouts), true);
 

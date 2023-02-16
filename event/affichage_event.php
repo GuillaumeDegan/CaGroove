@@ -8,7 +8,7 @@
     <?php
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-$data = $db->queryGET('SELECT * FROM event');
+$data = $db->queryGET('SELECT id,nom,places,lieu,date FROM event');
 ?>
 
 

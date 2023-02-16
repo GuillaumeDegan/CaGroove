@@ -11,7 +11,7 @@
 
     $submit_id = $_GET['id'];
 
-    $data = $db->queryGET("SELECT * FROM utilisateur WHERE id = $submit_id ;");
+    $data = $db->queryGET("SELECT id,nom,prenom,email,telephone,adresse,age,idRole FROM utilisateur WHERE id = $submit_id ;");
 ?>
   </head>
 

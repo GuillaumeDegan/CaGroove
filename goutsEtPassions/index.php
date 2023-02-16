@@ -9,9 +9,9 @@
     <?php
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-$dataGouts = $db->queryGET('SELECT * FROM goutsmusicaux');
+$dataGouts = $db->queryGET('SELECT id,style FROM goutsmusicaux');
 
-$dataPassions = $db->queryGET('SELECT * FROM passions');
+$dataPassions = $db->queryGET('SELECT nom,id FROM passions');
 
 ?>
 

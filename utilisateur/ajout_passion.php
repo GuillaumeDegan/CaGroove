@@ -4,7 +4,7 @@ $db = new ConnectDB('cagroove');
 
 $id = $_GET['id'];
 
-$Passion = $db->queryGET("SELECT * FROM passions");
+$Passion = $db->queryGET("SELECT nom, id FROM passions");
 $arrayPassion = json_decode(json_encode($Passion), true);
 
 

@@ -11,8 +11,8 @@
 
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
-$artists = $db->queryGET('SELECT * FROM artiste');
-$events = $db->queryGET('SELECT * FROM event');
+$artists = $db->queryGET('SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste');
+$events = $db->queryGET('SELECT id,nom,places,lieu,date FROM event');
 
 
 

@@ -16,8 +16,8 @@ $id = $_GET['id'];
 
 $horaire = $db->queryGET("SELECT organisation.id, horaires, artiste.nom as artiste, event.nom as event FROM organisation INNER JOIN artiste ON organisation.idArtiste = artiste.id INNER JOIN event ON organisation.idEvent = event.id WHERE organisation.id = $id");
 
-$artists = $db->queryGET('SELECT * FROM artiste');
-$events = $db->queryGET('SELECT * FROM event');
+$artists = $db->queryGET('SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste');
+$events = $db->queryGET('SELECT id,nom,places,lieu,date FROM event');
 
 
 ?>
