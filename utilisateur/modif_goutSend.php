@@ -1,21 +1,27 @@
+<!-- Page de traitement du formulaire de modification des gouts  -->
+
 <?php
+// connexion bdd
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
+// récuperation de l'id de l'user
 $id = $_GET['id'];
 
-// Delete all existing records for the user
+// Envoie de la requete de suppression de tous les gouts
 $sql = "DELETE FROM `utilisateursgouts` WHERE `idUtilisateur` = ?";
 $db->querySend($sql, [$id]);
 
-// Insert new records for the user's selected passions
-$passionArray = $_POST['gout'];
-foreach($passionArray as $passion) {
-    $passionId = str_replace("g_", "", $passion);
+// Récupération des checkboxs validées
+$goutArray = $_POST['gout'];
+foreach($goutArray as $gout) {
+    // envoie des requetes pour ajouter les nouveaux gouts
+    $goutId = str_replace("g_", "", $gout);
     $sql = "INSERT INTO `utilisateursgouts` (`idUtilisateur`, `idGout`) VALUES (?, ?); ";
-    $db->querySend($sql, [$id, $passionId]);
+    $db->querySend($sql, [$id, $goutId]);
 }
 
+// redirection
 header('Location: affichage_utilisateur.php');
 
 ?>
