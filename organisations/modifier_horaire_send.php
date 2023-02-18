@@ -14,8 +14,8 @@ $id = $_GET['id'];
 
 
 // création requete et envoie
-$sql="UPDATE `organisation` SET `horaires` = '$horaire', `idArtiste` = '$idArtiste', `idEvent` = '$idEvent' WHERE `id` = $id; ";
-$db->querySend($sql);
+$sql="UPDATE `organisation` SET `horaires` = ?, `idArtiste` = ?, `idEvent` = ? WHERE `id` = ?; ";
+$db->querySend($sql, [$horaire, $idArtiste, $idEvent, $id]);
 
 // redirection
 header('Location: index.php');

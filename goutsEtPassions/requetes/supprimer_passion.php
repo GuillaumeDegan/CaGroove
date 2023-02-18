@@ -9,7 +9,7 @@ $db = new ConnectDB('cagroove');
 $id = $_GET['id'];
 
 // requete envoyée
-$db->querySend("DELETE FROM `passions` WHERE `id` = $id");
+$db->querySend("DELETE FROM `passions` WHERE `id` = ?", [$id]);
 
 // redirection
 header('Location: ../index.php');

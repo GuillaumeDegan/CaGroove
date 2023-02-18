@@ -15,8 +15,8 @@ $date = $_POST['date'];
 require "../nocsrf.php";
 if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
     // création de la requete et envoie
-    $sql="INSERT INTO `event` (`id`, `nom`, `places`, `lieu`, `date`) VALUES (NULL, '$nom', '$place', '$lieu', '$date'); ";
-    $db->querySend($sql);
+    $sql="INSERT INTO `event` (`id`, `nom`, `places`, `lieu`, `date`) VALUES (NULL, ?, ?, ?, ?); ";
+    $db->querySend($sql, [$nom, $place, $lieu, $date]);
 
     // redirection
     header('Location: affichage_event.php');

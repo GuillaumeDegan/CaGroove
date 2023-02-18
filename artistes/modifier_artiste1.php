@@ -17,11 +17,11 @@ $db = new ConnectDB('cagroove');
 require "../nocsrf.php";
 $token = NoCSRF::generate( 'token' );
 
+
 // récupération de l'id de l'artiste à modifier
 $submit_id = $_GET['id'];
 
-//récupération de l'artiste en question
-$data = $db->queryGET("SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste WHERE id = $submit_id ;");
+$data = $db->queryGET("SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste WHERE id = ? ;", [$submit_id]);
 
 ?>
   </head>

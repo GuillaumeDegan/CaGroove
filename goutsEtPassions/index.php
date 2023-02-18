@@ -13,9 +13,9 @@
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 // recuperation de tous les gouts et de toutes les passions
-$dataGouts = $db->queryGET('SELECT id,style FROM goutsmusicaux');
+$dataGouts = $db->queryGET('SELECT id,style FROM goutsmusicaux', null);
 
-$dataPassions = $db->queryGET('SELECT nom,id FROM passions');
+$dataPassions = $db->queryGET('SELECT nom,id FROM passions', null);
 
 ?>
 

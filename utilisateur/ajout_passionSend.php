@@ -17,8 +17,8 @@ if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
     // boucle qui envoie les nouvelles passions et l'utilisateur dans la table d'association utilisateurspassions
     foreach($passionArray as $passion) {
         $passionId = str_replace("g_", "", $passion);
-        $sql = "INSERT INTO `utilisateurspassions` (`idUtilisateur`, `idPassion`) VALUES ('$id', '$passionId'); ";
-        $db->querySend($sql);
+        $sql = "INSERT INTO `utilisateurspassions` (`idUtilisateur`, `idPassion`) VALUES (?, ?); ";
+        $db->querySend($sql, [$id, $passionId]);
     }
 
     // redirection

@@ -20,11 +20,11 @@ $Artist = $_GET['artist'];
 $Event = $_GET['event'];
 
 // récupération des données de l'horaire en fonction de son id
-$horaire = $db->queryGET("SELECT organisation.id, horaires, artiste.nom as artiste, event.nom as event FROM organisation INNER JOIN artiste ON organisation.idArtiste = artiste.id INNER JOIN event ON organisation.idEvent = event.id WHERE organisation.id = $idHoraire");
+$horaire = $db->queryGET("SELECT organisation.id, horaires, artiste.nom as artiste, event.nom as event FROM organisation INNER JOIN artiste ON organisation.idArtiste = artiste.id INNER JOIN event ON organisation.idEvent = event.id WHERE organisation.id = ?", [$idHoraire]);
 
 // recuperation de tous les artistes et evenements
-$artists = $db->queryGET('SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste');
-$events = $db->queryGET('SELECT id,nom,places,lieu,date FROM event');
+$artists = $db->queryGET('SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste', null);
+$events = $db->queryGET('SELECT id,nom,places,lieu,date FROM event', null);
 
 
 ?>

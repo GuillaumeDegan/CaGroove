@@ -9,8 +9,8 @@ $db = new ConnectDB('cagroove');
 $id = $_GET['id'];
 
 // création de la requete et envoie
-$sql="DELETE FROM artiste WHERE `artiste`.`id` = $id ;";
-$db->querySend($sql);
+$sql="DELETE FROM artiste WHERE `artiste`.`id` = ? ;";
+$db->querySend($sql, [$id]);
 
 // redirection
 header('Location: affichage_artiste.php');

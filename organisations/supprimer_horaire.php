@@ -9,8 +9,8 @@ $db = new ConnectDB('cagroove');
 $id = $_GET['id'];
 
 // création de la requete et envoie
-$sql="DELETE FROM organisation WHERE id = $id ;";
-$db->querySend($sql);
+$sql="DELETE FROM organisation WHERE id = ? ;";
+$db->querySend($sql, [$id]);
 
 // redirection
 header('Location: index.php');

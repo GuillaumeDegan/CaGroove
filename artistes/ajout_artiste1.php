@@ -16,8 +16,8 @@ $nationaliter = $_POST['nationaliter'];
 require "../nocsrf.php";
 if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
     // envoie de la requete
-    $sql="INSERT INTO `artiste` (`id`, `nom`, `style`, `reseauxSociaux`, `nationalite`) VALUES (NULL, '$txtName', '$style', '$reseaux', '$nationaliter'); ";
-    $db->querySend($sql);
+    $sql="INSERT INTO `artiste` (`id`, `nom`, `style`, `reseauxSociaux`, `nationalite`) VALUES (NULL, ?, ?, ?, ?); ";
+    $db->querySend($sql, [$txtName, $style, $reseaux, $nationaliter]);
 
     // redirection vers l'affichage des artistes
     header('Location: affichage_artiste.php');

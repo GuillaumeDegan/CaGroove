@@ -9,7 +9,7 @@ $db = new ConnectDB('cagroove');
 $id = $_GET['id'];
 
 // suppréssion de l'user en question
-$db->querySend("DELETE FROM utilisateur WHERE `utilisateur`.`id` = $id ;");
+$db->querySend("DELETE FROM utilisateur WHERE `utilisateur`.`id` = ? ;", [$id]);
 
 // redirection
 header('Location: affichage_utilisateur.php');

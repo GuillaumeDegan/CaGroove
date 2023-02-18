@@ -18,8 +18,8 @@ $idRole = $_POST['Role'];
 require "../nocsrf.php";
 if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
     // création et envoie de la requete 
-    $sql="INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `email`, `telephone`, `adresse`, `age`, `idRole`) VALUES (NULL, '$txtName', '$prenom', '$email', '$telephone', '$adresse','$age', '$idRole'); ";
-    $db->querySend($sql);
+    $sql="INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `email`, `telephone`, `adresse`, `age`, `idRole`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?); ";
+    $db->querySend($sql, [$txtName, $prenom, $email, $telephone, $adresse, $age, $idRole]);
 
     // redirection
     header('Location: affichage_utilisateur.php');

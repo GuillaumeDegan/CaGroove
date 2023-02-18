@@ -15,15 +15,13 @@ $db = new ConnectDB('cagroove');
 
 // récupération de tous les utilisateurs
 $data = $db->queryGET('SELECT utilisateur.id as id, utilisateur.nom as nom, prenom, email, telephone, adresse, age, role.nom  as role FROM utilisateur 
-INNER JOIN role ON utilisateur.idRole = role.id group by utilisateur.nom ');
+INNER JOIN role ON utilisateur.idRole = role.id group by utilisateur.nom ', null);
 
 // préparation de la requete de récupération des gouts
 $sqlGoutsRequest = "SELECT goutsmusicaux.style from utilisateursgouts inner join goutsmusicaux on utilisateursgouts.idGout = goutsmusicaux.id where utilisateursgouts.idUtilisateur = ?";
-$GoutsPrepared = $db->prepare($sqlGoutsRequest);
 
 // préparation de la requete de récupération des passions
 $sqlPassionsRequest = "SELECT passions.nom as nompassion, utilisateurspassions.idUtilisateur from utilisateurspassions inner join passions on utilisateurspassions.idPassion = passions.id where utilisateurspassions.idUtilisateur = ?";
-$PassionsPrepared = $db->prepare($sqlPassionsRequest);
 
 ?>
 </head>
@@ -54,12 +52,10 @@ $PassionsPrepared = $db->prepare($sqlPassionsRequest);
     <tbody>
         <?php foreach ($data as $row):
             // execution de la requete des gouts et récupération des gouts selon l'utilisateur passé
-            $GoutsPrepared->execute([$row->id]);
-            $GoutsData = $GoutsPrepared->fetchAll(PDO::FETCH_OBJ);
+            $GoutsData = $db->queryGET($sqlGoutsRequest, [$row->id]);
             
             // execution de la requete des passions et récupération des passions selon l'utilisateur passé
-            $PassionsPrepared->execute([$row->id]);
-            $PassionsData = $PassionsPrepared->fetchAll(PDO::FETCH_OBJ);
+            $PassionsData = $db->queryGET($sqlPassionsRequest, [$row->id]);
             ?>
             <tr>
                 <td><?= $row->id; ?></td>

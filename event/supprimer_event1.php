@@ -9,8 +9,8 @@ $db = new ConnectDB('cagroove');
 $id = $_GET['id'];
 
 // Création de la requete et envoie
-$sql="DELETE FROM event WHERE `event`.`id` = $id ;";
-$db->querySend($sql);
+$sql="DELETE FROM event WHERE `event`.`id` = ? ;";
+$db->querySend($sql, [$id]);
 
 // redirection
 header('Location: affichage_event.php');

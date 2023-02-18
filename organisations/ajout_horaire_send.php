@@ -15,8 +15,8 @@ $idEvent = $_POST['idEvent'];
 require "../nocsrf.php";
 if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
     // création de la requete et envoie
-    $sql="INSERT INTO `organisation` (`horaires`, `idArtiste`, `idEvent`) VALUES ('$horaire', '$idArtiste', '$idEvent'); ";
-    $db->querySend($sql);
+    $sql="INSERT INTO `organisation` (`horaires`, `idArtiste`, `idEvent`) VALUES (?, ?, ?); ";
+    $db->querySend($sql, [$horaire, $idArtiste, $idEvent]);
 
     // redirection
     header('Location: index.php');

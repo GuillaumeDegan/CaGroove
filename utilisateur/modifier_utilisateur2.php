@@ -19,7 +19,7 @@ $age = $_POST['age'];
 $idRole = $_POST['idRole'];
 
 // envoie de la requete
-$db->querySend("UPDATE `utilisateur` SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email', `telephone` = '$telephone', `adresse` = '$adresse', `age` = '$age', `idRole` = '$idRole' WHERE `utilisateur`.`id` = $id; ");
+$db->querySend("UPDATE `utilisateur` SET `nom` = ?, `prenom` = ?, `email` = ?, `telephone` = ?, `adresse` = ?, `age` = ?, `idRole` = ? WHERE `utilisateur`.`id` = ?; ", [$nom, $prenom, $email, $telephone, $adresse, $age, $idRole, $id]);
 
 // redirection 
 header('Location: affichage_utilisateur.php');

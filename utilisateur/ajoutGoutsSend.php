@@ -17,7 +17,7 @@ if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
     // boucle qui envoie la requete d'ajout de l'utilisateur et du gout dans la table d'association utilisateursgouts
     foreach($goutsArray as $gout) {
         $goutId = str_replace("g_", "", $gout);
-        $db->querySend("INSERT INTO `utilisateursgouts` (`idUtilisateur`, `idGout`) VALUES ('$id', '$goutId'); ");
+        $db->querySend("INSERT INTO `utilisateursgouts` (`idUtilisateur`, `idGout`) VALUES (?, ?); ", [$id, $goutId]);
     }
 
     // redirection

@@ -12,7 +12,7 @@
 require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 // requete de récuperation de tous les events
-$data = $db->queryGET('SELECT id,nom,places,lieu,date FROM event');
+$data = $db->queryGET('SELECT id,nom,places,lieu,date FROM event', null);
 ?>
 
 

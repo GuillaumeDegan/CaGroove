@@ -19,8 +19,8 @@ $nationaliter = $_POST['nationaliter'];
 require "../nocsrf.php";
 if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
     // création de la requete et envoie
-    $sql="UPDATE `artiste` SET `nom` = '$nom', `style` = '$style', `reseauxSociaux` = '$reseaux', `nationalite` = '$nationaliter' WHERE `artiste`.`id` = $id; ";
-    $db->querySend($sql);
+    $sql="UPDATE `artiste` SET `nom` = ?, `style` = ?, `reseauxSociaux` = ?, `nationalite` = ? WHERE `artiste`.`id` = ?; ";
+    $db->querySend($sql, [$nom, $style, $reseaux, $nationaliter, $id]);
 
     // redirection vers l'affichage
     header('Location: affichage_artiste.php');

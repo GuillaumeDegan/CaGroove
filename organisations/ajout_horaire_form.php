@@ -19,8 +19,8 @@ require "../nocsrf.php";
 $token = NoCSRF::generate( 'token' );
 
 // recuperation de tous les artistes et evenements
-$artists = $db->queryGET('SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste');
-$events = $db->queryGET('SELECT id,nom,places,lieu,date FROM event');
+$artists = $db->queryGET('SELECT id,nom,style,reseauxSociaux,nationalite FROM artiste', null);
+$events = $db->queryGET('SELECT id,nom,places,lieu,date FROM event', null);
 
 
 ?>

@@ -13,9 +13,7 @@ $token = NoCSRF::generate( 'token' );
 $id = $_GET['id'];
 
 // récupération de otus les gouts musicaux
-$Gouts = $db->queryGET("SELECT id,style FROM goutsmusicaux");
-
-$arrayGouts = json_decode(json_encode($Gouts), true);
+$Gouts = $db->queryGET("SELECT id,style FROM goutsmusicaux", null);
 
 ?>
 <?php include '../header/header.php';?>
@@ -23,7 +21,7 @@ $arrayGouts = json_decode(json_encode($Gouts), true);
     <form method="post" action="ajoutGoutsSend.php?id=<?= $id ?>">
     <!-- Boucle qui affiche tous les gouts dans des checkboxs -->
         <?php foreach($Gouts as $gout) :?>
-            <label for="gouts[]"><?= $gout->style ?></label>
+            <label for="gouts[]"><?= htmlspecialchars($gout->style) ?></label>
             <input type="checkbox" name="gouts[]" value="g_<?= $gout->id ?>">
         <?php endforeach; ?>
         <input type="hidden" name="token" value="<?= $token ?>" />

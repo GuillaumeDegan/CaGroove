@@ -27,22 +27,24 @@ class ConnectDB{
         return $this->pdo;
     }
 
-    // préparation des requetes à envoyer plusieurs fois
+    // préparation des requetes à envoyer
     public function prepare($statement) {
         $req = $this->getPDO()->prepare($statement);
         return $req;
     }
 
     // méthode d'envoie d'une requete de récupération d'information
-    public function queryGET($statement) {
-        $req = $this->getPDO()->query($statement);
+    public function queryGET($statement, $params) {
+        $req = $this->prepare($statement);
+        $req->execute($params);
         $datas = $req->fetchAll(PDO::FETCH_OBJ);
         return $datas;
     }
 
     // méthode d'envoie d'une requete de suppression/modification/création
-    public function querySend($statement) {
-        $req = $this->getPDO()->query($statement);
+    public function querySend($statement, $params) {
+        $req = $this->prepare($statement);
+        $req->execute($params);
     }
 
 }

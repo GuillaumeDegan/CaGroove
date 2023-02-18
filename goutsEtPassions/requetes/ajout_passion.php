@@ -9,7 +9,7 @@ $db = new ConnectDB('cagroove');
 $passion = $_POST['passion'];
 
 // envoie de la requete 
-$db->querySend("INSERT INTO `passions` (`id`, `nom`) VALUES (NULL, '$passion'); ");
+$db->querySend("INSERT INTO `passions` (`id`, `nom`) VALUES (NULL, ?); ", [$passion]);
 
 //redirection
 header('Location: ../index.php');

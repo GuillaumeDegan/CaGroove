@@ -18,8 +18,8 @@ $nom = $_POST['nom'];
 require "../nocsrf.php";
 if(NoCSRF::check( 'token', $_POST, true, 60*10, false )) {
     // création de la requete et envoie
-    $sql="UPDATE `event` SET  `nom` = '$nom', `places` = '$place', `lieu` = '$lieu', `date` = '$date' WHERE `id` = '$id';";
-    $db->querySend($sql);
+    $sql="UPDATE `event` SET  `nom` = ?, `places` = ?, `lieu` = ?, `date` = ? WHERE `id` = ?;";
+    $db->querySend($sql, [$nom, $place, $lieu, $date, $id]);
 
     // redirection
     header('Location: affichage_event.php');

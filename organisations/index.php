@@ -13,7 +13,7 @@ require "../database/connectDB.php";
 $db = new ConnectDB('cagroove');
 
 // recuperation de toutes les horaires
-$data = $db->queryGET('SELECT organisation.id, horaires, artiste.nom as artiste, event.nom as event FROM organisation INNER JOIN artiste ON organisation.idArtiste = artiste.id INNER JOIN event ON organisation.idEvent = event.id');
+$data = $db->queryGET('SELECT organisation.id, horaires, artiste.nom as artiste, event.nom as event FROM organisation INNER JOIN artiste ON organisation.idArtiste = artiste.id INNER JOIN event ON organisation.idEvent = event.id', null);
 
 ?>
    

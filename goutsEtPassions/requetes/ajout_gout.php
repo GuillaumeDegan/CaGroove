@@ -9,7 +9,7 @@ $db = new ConnectDB('cagroove');
 $style = $_POST['style'];
 
 // envoie de la requete 
-$db->querySend("INSERT INTO `goutsmusicaux` (`id`, `style`) VALUES (NULL, '$style'); ");
+$db->querySend("INSERT INTO `goutsmusicaux` (`id`, `style`) VALUES (NULL, ?); ", [$style]);
 
 //redirection
 header('Location: ../index.php');

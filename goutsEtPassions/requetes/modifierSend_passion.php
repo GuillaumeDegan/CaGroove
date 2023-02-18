@@ -10,7 +10,7 @@ $id = $_GET['id'];
 $passion = $_POST['passion'];
 
 // envoie de la requete
-$db->querySend("UPDATE `passions` SET `nom` = '$passion' WHERE `id` = '$id';");
+$db->querySend("UPDATE `passions` SET `nom` = ? WHERE `id` = ?;", [$passion, $id]);
 
 // redirection
 header('Location: ../index.php');

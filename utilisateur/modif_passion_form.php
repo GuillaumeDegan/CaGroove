@@ -4,24 +4,18 @@ $db = new ConnectDB('cagroove');
 
 $id = $_GET['id'];
 
-$passionTotal = $db->queryGet("SELECT id,nom FROM passions");
-$arrayPassionTotal = json_decode(json_encode($passionTotal), true);
+$passionTotal = $db->queryGet("SELECT id,nom FROM passions", null);
 
-
-$Passion = $db->queryGET("SELECT id,nom FROM passions inner join utilisateurspassions on passions.id = utilisateurspassions.idPassion where utilisateurspassions.idUtilisateur = $id ");
-
-$arrayPassion = json_decode(json_encode($Passion), true);
-
-
+$Passion = $db->queryGET("SELECT id,nom FROM passions inner join utilisateurspassions on passions.id = utilisateurspassions.idPassion where utilisateurspassions.idUtilisateur = ? ", [$id]);
 
 ?>
 <?php include '../header/header.php';?>
 <div>
     <form method="post" action="modif_passionSend.php?id=<?= $id ?>">
-        <?php foreach($arrayPassionTotal as $passion) :
+        <?php foreach($passionTotal as $passion) :
             $checked = '';
-            foreach($arrayPassion as $userPassion) {
-                if ($userPassion['id'] == $passion['id']) {
+            foreach($Passion as $userPassion) {
+                if ($userPassion->id == $passion->id) {
                     $checked = 'checked';
                     break;
                 }
@@ -29,8 +23,8 @@ $arrayPassion = json_decode(json_encode($Passion), true);
         ?>
         
 
-        <input type="checkbox" name="passion[]" value="g_<?= $passion['id'] ?>" <?= $checked ?>>
-            <label for="passion[]"><?= $passion['nom'] ?></label>
+        <input type="checkbox" name="passion[]" value="g_<?= htmlspecialchars($passion->id) ?>" <?= $checked ?>>
+            <label for="passion[]"><?= htmlspecialchars($passion->nom) ?></label>
 
         <?php endforeach; ?>
         <input type="submit">
