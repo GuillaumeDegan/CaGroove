@@ -59,31 +59,31 @@ $sqlPassionsRequest = "SELECT passions.nom as nompassion, utilisateurspassions.i
             ?>
             <tr>
                 <td><?= $row->id; ?></td>
-                <td><?= $row->nom ?></td>
-                <td><?= $row->prenom ?></td>
-                <td><?= $row->email ?></td>
-                <td><?= $row->telephone ?></td>
-                <td><?= $row->adresse ?></td>
-                <td><?= $row->age ?></td>
-                <td><?= $row->role ?></td>
-                <td><a href="ajoutGouts.php?id=<?= $row->id ?>">Ajouter des gouts</a></td>
+                <td><?= htmlspecialchars($row->nom) ?></td>
+                <td><?= htmlspecialchars($row->prenom) ?></td>
+                <td><?= htmlspecialchars($row->email) ?></td>
+                <td><?= htmlspecialchars($row->telephone) ?></td>
+                <td><?= htmlspecialchars($row->adresse) ?></td>
+                <td><?= htmlspecialchars($row->age) ?></td>
+                <td><?= htmlspecialchars($row->role) ?></td>
+                <td><a href="ajoutGouts.php?id=<?= htmlspecialchars($row->id) ?>">Ajouter des gouts</a></td>
                 <!-- Boucle qui concatène tous les gouts de l'utilisateur séparés d'une virgule -->
                 <td><p>
                     <?php foreach ($GoutsData as $gout): ?>
-                    <?= $gout->style.', ' ?>
+                    <?= htmlspecialchars($gout->style).', ' ?>
                     <?php endforeach; ?>
                 </p></td>
-                <td><a href="modif_gout_form.php?id=<?= $row->id ?>">Modifier des gouts</a></td>
-                <td><a href="ajout_passion.php?id=<?= $row->id ?>">Ajouter des Passion</a></td>   
+                <td><a href="modif_gout_form.php?id=<?= htmlspecialchars($row->id) ?>">Modifier des gouts</a></td>
+                <td><a href="ajout_passion.php?id=<?= htmlspecialchars($row->id) ?>">Ajouter des Passion</a></td>   
                 <!-- Boucle qui concatène toutes les passions de l'utilisateur séparées d'une virgule -->
                 <td><p>
                     <?php foreach ($PassionsData as $passion): ?>
-                    <?= $passion->nompassion.', ' ?>
+                    <?= htmlspecialchars($passion->nompassion).', ' ?>
                     <?php endforeach; ?>
                 </p></td> 
-                <td><a href="modif_passion_form.php?id=<?= $row->id ?>">modifier passion</a></td>
-                <td><a href="modifier_utilisateur1.php?id=<?= $row->id ?> ">modifier</a></td>
-                <td><a href="supprimer_utilisateur.php?id=<?= $row->id ?> ">supprimer</a></td>
+                <td><a href="modif_passion_form.php?id=<?= htmlspecialchars($row->id) ?>">modifier passion</a></td>
+                <td><a href="modifier_utilisateur1.php?id=<?=  htmlspecialchars($row->id) ?> ">modifier</a></td>
+                <td><a href="supprimer_utilisateur.php?id=<?=  htmlspecialchars($row->id) ?> ">supprimer</a></td>
                 </tr>
         <?php endforeach; ?>
     </tbody>

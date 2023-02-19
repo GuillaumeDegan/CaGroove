@@ -22,7 +22,7 @@ $Gouts = $db->queryGET("SELECT id,style FROM goutsmusicaux", null);
     <!-- Boucle qui affiche tous les gouts dans des checkboxs -->
         <?php foreach($Gouts as $gout) :?>
             <label for="gouts[]"><?= htmlspecialchars($gout->style) ?></label>
-            <input type="checkbox" name="gouts[]" value="g_<?= $gout->id ?>">
+            <input type="checkbox" name="gouts[]" value="g_<?= htmlspecialchars($gout->id) ?>">
         <?php endforeach; ?>
         <input type="hidden" name="token" value="<?= $token ?>" />
         <input type="submit">

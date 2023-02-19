@@ -10,9 +10,9 @@ $gout = $_GET['style'];
 <?php include '../header/header.php';?>
 
 <h3>Modification</h3>
-<form method="post" action="requetes/modifierSend_gout.php?id=<?= $id ?>">
+<form method="post" action="requetes/modifierSend_gout.php?id=<?= htmlspecialchars($id) ?>">
     <label for="style">Nom du gout musical :</label>
-    <input value="<?= $gout ?>" name="style" type="text">
+    <input value="<?= htmlspecialchars($gout) ?>" name="style" type="text">
     <input type="submit">
 </form>
 <br />

@@ -19,11 +19,11 @@ $passions = $db->queryGET("SELECT nom, id FROM passions", null);
 ?>
 <?php include '../header/header.php';?>
 <div>
-    <form method="post" action="ajout_passionSend.php?id=<?= $id ?>">
+    <form method="post" action="ajout_passionSend.php?id=<?= htmlspecialchars($id) ?>">
     <!-- Boucle qui affiche toute les passions dans des checkboxs -->
         <?php foreach($passions as $passion) :?>
-            <label for="passion[]"><?= $passion->nom ?></label>
-            <input type="checkbox" name="passion[]" value="g_<?= $passion->id ?>">
+            <label for="passion[]"><?= htmlspecialchars($passion->nom) ?></label>
+            <input type="checkbox" name="passion[]" value="g_<?= htmlspecialchars($passion->id) ?>">
         <?php endforeach; ?>
         <input type="hidden" name="token" value="<?= $token ?>" />
         <input type="submit">
